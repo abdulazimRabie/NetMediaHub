@@ -16,10 +16,10 @@
     <aside id="default-sidebar"
       class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform duration-500 -translate-x-full sm:translate-x-0"
       aria-label="Sidebar">
-      <div class="h-full px-5 py-4 bg-gray-50 dark:bg-gray-800">
+      <div class="h-full px-5 py-4 bg-gray-50 dark:bg-black">
 
         <!-- Profile avatar -->
-        <div class="relative flex items-center justify-between hover:cursor-pointer my-4 p-2 bg-white border border-gray-100 rounded-lg">
+        <div class="relative flex items-center justify-between hover:cursor-pointer my-4 p-2 bg-white dark:bg-black-second border border-gray-800 dark:border-black rounded-lg">
           <div class="flex items-center gap-2">
             <div>
               <img class="w-10 h-10 rounded-full" src="../assets/avatars/avatar_black_bg.jpg" alt="avatar">
@@ -32,7 +32,7 @@
           </div>
           <!-- : icon -> dropdown -->
           <div>
-            <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" data-dropdown-placement="right-end" data-dropdown-offset-distance data-dropdown-offset-skidding="-10px"
+            <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" data-dropdown-placement="right-end" data-dropdown-offset-distance="15" data-dropdown-offset-skidding="-10px"
               class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               type="button">
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
@@ -43,10 +43,10 @@
             
             <!-- Dropdown menu -->
             <div id="dropdownDots"
-              class="z-10 px-2 hidden bg-white divide-y divide-gray-100 border rounded-lg shadow min-w-fit dark:bg-gray-700 dark:divide-gray-600">
+              class="z-10 px-2 hidden bg-white divide-y divide-gray-100 border dark:border-gray-700 rounded-lg shadow min-w-fit dark:bg-gray-700 dark:divide-gray-600">
               <ul class="py-2 text-xs dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
                 <li>
-                  <a href="#" class="flex gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  <a href="#" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <svg class="w-6 h-6  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-width="2"
@@ -56,7 +56,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="flex gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  <a href="#" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"
@@ -66,7 +66,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="flex gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  <a href="#" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -168,7 +168,7 @@
             </a>
           </li>
           
-          <li class="bg-white rounded-lg">
+          <li class="bg-white dark:bg-black-second rounded-lg">
             <button type="button"
               class="flex items-center w-full p-2  text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="appearance-dropdown" data-collapse-toggle="appearance-dropdown">              
@@ -187,7 +187,7 @@
             </button>
             <ul id="appearance-dropdown" class="hidden py-2 space-y-2">
               <li>
-                <button class="flex gap-2 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                <button id="lightBtn" class="flex gap-2 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800">
                   <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -197,13 +197,23 @@
                 </button>
               </li>
               <li>
-                <button class="flex gap-1 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                <button id="darkBtn" class="flex gap-1 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800">
                   <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
                   </svg>
                   Dark
+                </button>
+              </li>
+              <li>
+                <button id="systemBtn" class="flex gap-1 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800">
+                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1M9 12H4m8 8V9h8v11h-8Zm0 0H9m8-4a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z" />
+                  </svg>
+                  System
                 </button>
               </li>
               
@@ -216,7 +226,7 @@
 
     <!-- content -->
     <div class="md:pl-64" id="">
-      <nav class="grid items-center grid-cols-[auto,1fr] sm:grid-cols-1 border-b border-b-gray-200 py-4">
+      <nav class="grid items-center grid-cols-[auto,1fr] sm:grid-cols-1 border-b border-b-gray-200 py-4 dark:bg-black dark:border-b-black">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
           type="button"
           class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -230,7 +240,7 @@
         <div class="justify-self-center">
 
           <button data-modal-target="search-modal" data-modal-toggle="search-modal"
-            class="flex gap-3 w-80 text-gray-400 bg-white border border-gray-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="flex gap-3 w-80 text-gray-400 bg-white border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black-second dark:border-black dark:hover:bg-gray-700 dark:focus:ring-gray-700"
             type="button">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
               height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -250,7 +260,7 @@
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-2xl max-h-full">
               <!-- Modal content -->
-              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <div class="relative bg-white rounded-lg shadow dark:bg-black">
                 <!-- Modal header -->
                 <form class="w-full">
                   <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -263,25 +273,25 @@
                       </svg>
                     </div>
                     <input type="search" id="default-search"
-                      class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-200 rounded-t-lg  focus:ring-gray-200 focus:border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-200 rounded-t-lg focus:border-gray-200 dark:bg-black dark:border-gray-600 dark:placeholder-gray-200 dark:text-white  dark:focus:border-gray-700"
                       placeholder="Search Mockups, Logos..." required />
                   </div>
                 </form>
 
                 <!-- Modal body -->
-                <div class="p-4 md:p-5 space-y-4">
+                <div class="p-4 md:p-5 space-y-4 dark:bg-balck">
                   <div class="grid gap-3">
                     <!-- iam looking for -->
                     <div>
-                      <div class="mb-2"><span class="text-sm text-gray-500 ">I'm looking for ...</span></div>
+                      <div class="mb-2"><span class="text-sm text-gray-500 dark:text-gray-400">I'm looking for ...</span></div>
                       <div>
                         <span id="badge-dismiss-reactions"
-                          class="inline-flex items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white border border-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                          class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
                           <!-- icon -->
-                          <svg class="text-sm w-6 h-6 me-2 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                              d="M15 9h.01M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM6.6 13a5.5 5.5 0 0 0 10.81 0H6.6Z" />
+                          <svg class="w-[19px] h-[19px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                              d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z" />
                           </svg>
                   
                           Reactions
@@ -299,12 +309,13 @@
                         </span>
                   
                         <span id="badge-dismiss-people"
-                          class="inline-flex items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white border border-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                          class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
                           <!-- icon -->
-                          <svg class="text-sm w-6 h-6 me-2 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="q"
-                              d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                          <svg class="w-[19px] h-[19px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                              d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
+                              clip-rule="evenodd" />
                           </svg>
                   
                           People
@@ -322,14 +333,15 @@
                         </span>
                   
                         <span id="badge-dismiss-copany"
-                          class="inline-flex items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white border border-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                          class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
                           <!-- icon -->
-                          <svg class="text-sm w-6 h-6 me-2 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                              d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z" />
+                          <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                              d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
+                              clip-rule="evenodd" />
                           </svg>
-                  
+
                   
                           Companies
                   
@@ -349,70 +361,32 @@
                   
                     <!-- last search -->
                     <div>
-                      <div class="mb-2"><span class="text-sm text-gray-500 ">Last search <span
-                            class="text-gray-900 font-medium">3</span></span></div>
+                      <div class="mb-2"><span class="text-sm text-gray-500 dark:text-gray-400">Last search <span
+                            class="text-gray-900 dark:text-gray-300 font-medium">3</span></span></div>
                       <div class="grid">
                   
-                        <div class="p-2 rounded-md flex items-center gap-1 hover:bg-gray-100 hover:cursor-pointer">
-                          <img class="w-7 h-7 rounded-full" src="../assets/avatars/download.jpg" alt="">
-                          <div class="font-medium dark:text-white">
+                        <div class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                          <img class="w-5 h-5 rounded-full" src="../assets/avatars/download.jpg" alt="">
+                          <div class="flex items-center gap-1 font-medium dark:text-white">
                             <div>Yahia Rabie</div>
+                            <span class="text-gray-500 text-sm">yaya@outlook.com</span>
                           </div>
-                          <span class="text-gray-500 text-sm">yaya@outlook.com</span>
                         </div>
-                  
-                        <div class="p-2 rounded-md flex items-center gap-1 hover:bg-gray-100 hover:cursor-pointer">
-                          <img class="w-7 h-7 rounded-full" src="../assets/avatars/avatar_black_bg.jpg" alt="">
-                          <div class="font-medium dark:text-white">
-                            <div>Abdulazim R.</div>
+                        <div class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                          <img class="w-5 h-5 rounded-full" src="../assets/avatars/gril-yellow.jpg" alt="">
+                          <div class="flex items-center gap-1 font-medium dark:text-white">
+                            <div>Abdulazim Rabie</div>
+                            <span class="text-gray-500 text-sm">a.a@outlook.com</span>
                           </div>
-                          <span class="text-gray-500 text-sm">abdo.rabie@gmail.com</span>
                         </div>
-                  
-                        <div class="p-2 rounded-md flex items-center gap-1 hover:bg-gray-100 hover:cursor-pointer">
-                          <img class="w-7 h-7 rounded-full" src="../assets/avatars/girl.jpg" alt="">
-                          <div class="font-medium dark:text-white">
-                            <div>Manar Mohamed</div>
+                        <div class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                          <img class="w-5 h-5 rounded-full" src="../assets/avatars/girl-brown.jpg" alt="">
+                          <div class="flex items-center gap-1 font-medium dark:text-white">
+                            <div>Manar Rabie</div>
+                            <span class="text-gray-500 text-sm">m.m@outlook.com</span>
                           </div>
-                          <span class="text-gray-500 tex-sm">m.r.m@outlook.com</span>
                         </div>
-                      </div>
-                    </div>
-
-                    <!-- files -->   
-                    <div>
-                      <div class="mb-2"><span class="text-sm text-gray-500 ">Files <span class="text-gray-900 font-medium">1</span></span>
-                      </div>
-                  
-                      <div class="flex justify-between items-center hover:cursor-pointer">
-                        <div class="flex gap-1 items-center">
-                  
-                          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M5 17v-5h1.5a1.5 1.5 0 1 1 0 3H5m12 2v-5h2m-2 3h2M5 10V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1v6M5 19v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1M10 3v4a1 1 0 0 1-1 1H5m6 4v5h1.375A1.627 1.627 0 0 0 14 15.375v-1.75A1.627 1.627 0 0 0 12.375 12H11Z" />
-                          </svg>
-                  
-                          <span class="font-medium dark:text-white">Invoice<span class="text-gray-500">.pdf</span></span>
-                  
-                          <div class="ms-2 flex -space-x-2 rtl:space-x-reverse">
-                            <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800"
-                              src="../assets/avatars/avatar_black_bg.jpg" alt="">
-                            <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="../assets/avatars/girl.jpg"
-                              alt="">
-                          </div>
-                  
-                        </div>
-                  
-                        <button class="flex gap-1 p-1 rounded-md hover:bg-gray-100">
-                          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="m15.141 6 5.518 4.95a1.05 1.05 0 0 1 0 1.549l-5.612 5.088m-6.154-3.214v1.615a.95.95 0 0 0 1.525.845l5.108-4.251a1.1 1.1 0 0 0 0-1.646l-5.108-4.251a.95.95 0 0 0-1.525.846v1.7c-3.312 0-6 2.979-6 6.654v1.329a.7.7 0 0 0 1.344.353 5.174 5.174 0 0 1 4.652-3.191l.004-.003Z" />
-                          </svg>
-                  
-                          <span>Share</span>
-                        </button>
+                
                       </div>
                     </div>
                   </div>
@@ -422,22 +396,14 @@
               </div>
             </div>
           </div>
-
-          <!-- Dropdown menu -->
-          <div id="dropdown-search-box"
-            class="z-10 hidden bg-white border-t border-gray-200 div ide-y divide-gray-100 rounded-b-lg shadow-md w-full dark:bg-gray-700">
-            
-          </div>
-
-          
         </div>
       </nav>
 
       <!-- Posts -->
-      <div class="p-5 grid grid-cols-1 justify-center justify-items-center gap-3">
+      <div class="p-5 grid grid-cols-1 justify-center justify-items-center gap-3 dark:bg-black">
 
         <!-- Post -->
-        <div class="grid gap-2 bg-white border rounded-lg border-gray-100 shadow-sm p-3 lg:w-[800px]">
+        <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-3 lg:w-[800px]">
           <!-- header -->
           <header class="flex justify-between items-center">
             <!-- info -->
@@ -455,7 +421,7 @@
                     <span class="font-medium dark:text-white">Karim Omar</span>
                     <div>
                       <span class="font-medium text-blue-700">.</span>
-                      <span>8:23 AM</span>
+                      <span class="dark:text-gray-300">8:23 AM</span>
                     </div>
                   </div>
 
@@ -467,7 +433,7 @@
 
             <!-- follow -->
             <button type="button"
-              class="text-white bg-gradient-to-r from-gray-500 via-gray-800 to-black hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+              class="text-white bg-black dark:bg-white dark:text-black  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
               Follow
             </button>
           </header>
@@ -482,35 +448,27 @@
               class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Red</span>
             <span
               class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Green</span>
-            <span
-              class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Yellow</span>
-            <span
-              class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Indigo</span>
-            <span
-              class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Purple</span>
-            <span
-              class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">Pink</span>
-          </div>
+            
           <!-- body -->
           <div>
-            <p class="text-xl">You’re looking at my new design right now. These are some iOS elements that I designed recently.🧢
+            <p class="my-4 text-gray-500 dark:text-gray-200">You’re looking at my new design right now. These are some iOS elements that I designed recently.🧢
                 Hope you like this design too!😉
             </p>
           </div>
           <!-- reactions -->
           <div class="flex gap-1">
             <span
-              class="flex gap-0.5 py-1 px-3 text-sm rounded-full bg-gray cursor-pointer border border-gray-200 bg-gray-100 hover:bg-white">
+              class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
               <span>❤</span>
               <span>12</span>
             </span>
             <span
-              class="flex gap-0.5 py-1 px-3 text-sm rounded-full bg-gray cursor-pointer border border-gray-200 bg-gray-100 hover:bg-white">
+              class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
               <span>🎯</span>
               <span>40</span>
             </span>
             <span
-              class="flex gap-0.5 py-1 px-3 text-sm rounded-full bg-gray cursor-pointer border border-gray-200 bg-gray-100 hover:bg-white">
+              class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
               <span>😛</span>
               <span>20</span>
             </span>
@@ -533,7 +491,7 @@
               </header>
               <!-- comment body -->
               <div>
-                <p class="pl-10">We have been passionated following all hot ternds in design industry</p>
+                <p class="pl-10 text-gray-500 dark:text-gray-200">We have been passionated following all hot ternds in design industry</p>
               </div>
 
               <!-- Comments reaction -->
@@ -552,20 +510,20 @@
               </header>
               <!-- comment body -->
               <div>
-                <p class="pl-10">We have been passionated following all hot ternds in design industry</p>
+                <p class="pl-10 text-gray-500 dark:text-gray-200">We have been passionated following all hot ternds in design industry</p>
               </div>
 
               <!-- Comments reaction -->
               <div class="flex gap-1 pl-10 mt-2">
-                <span class="flex gap-0.5 py-1 px-3 text-sm rounded-full bg-gray cursor-pointer border border-gray-200 bg-gray-100 hover:bg-white">
+                <span class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
                   <span>❤</span>
                   <span>12</span>
                 </span>
-                <span class="flex gap-0.5 py-1 px-3 text-sm rounded-full bg-gray cursor-pointer border border-gray-200 bg-gray-100 hover:bg-white">
+                <span class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
                   <span>🎯</span>
                   <span>40</span>
                 </span>
-                <span class="flex gap-0.5 py-1 px-3 text-sm rounded-full bg-gray cursor-pointer border border-gray-200 bg-gray-100 hover:bg-white">
+                <span class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
                   <span>😛</span>
                   <span>20</span>
                 </span>
@@ -626,6 +584,7 @@
   </div>
 
 
+  <script src="./darkmode.js"></script>
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>
