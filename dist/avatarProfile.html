@@ -1,0 +1,77 @@
+<!-- Profile avatar -->
+<div
+  class="relative flex items-center justify-between hover:cursor-pointer my-4 p-2 bg-white dark:bg-black-second border border-gray-800 dark:border-black rounded-lg">
+  <div class="flex items-center gap-2">
+    <div>
+      <img class="w-10 h-10 rounded-full" src="../assets/avatars/avatar_black_bg.jpg" alt="avatar">
+      <span
+        class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+    </div>
+    <div class="font-medium dark:text-white">
+      <h2>Abdulazim</h2>
+    </div>
+  </div>
+  <!-- : icon -> dropdown -->
+  <div>
+    <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" data-dropdown-placement="right-end"
+      data-dropdown-offset-distance="15" data-dropdown-offset-skidding="-10px"
+      class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      type="button">
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+        <path
+          d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+      </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div id="dropdownDots"
+      class="z-10 px-2 hidden bg-white divide-y divide-gray-100 border dark:border-gray-700 rounded-lg shadow min-w-fit dark:bg-gray-700 dark:divide-gray-600">
+      <ul class="py-2 text-xs dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+        <li>
+          <a href="#"
+            class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg class="w-6 h-6  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-width="2"
+                d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+            View profile
+          </a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="2"
+                d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+            Account Settings
+          </a>
+        </li>
+        <li>
+          <a href="#"
+            class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M18.122 17.645a7.185 7.185 0 0 1-2.656 2.495 7.06 7.06 0 0 1-3.52.853 6.617 6.617 0 0 1-3.306-.718 6.73 6.73 0 0 1-2.54-2.266c-2.672-4.57.287-8.846.887-9.668A4.448 4.448 0 0 0 8.07 6.31 4.49 4.49 0 0 0 7.997 4c1.284.965 6.43 3.258 5.525 10.631 1.496-1.136 2.7-3.046 2.846-6.216 1.43 1.061 3.985 5.462 1.754 9.23Z" />
+            </svg>
+            Keyboard shortcuts
+          </a>
+        </li>
+      </ul>
+      <div class="py-2">
+        <a href="#"
+          class="flex gap-2 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />
+          </svg>
+          Log out
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
