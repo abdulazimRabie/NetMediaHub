@@ -17,14 +17,14 @@
       aria-label="Sidebar">
       <div class="h-full px-5 py-4 bg-gray-50 dark:bg-black">
 
-        <div class="grid gap-3 p-2 my-3">
-          <a role="button" href="./registeration.html"
+        <div class="grid gap-3 p-2 my-3" id="login-register-wrapper">
+          <a role="button" href="./registeration.html" id="loginLink"
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Log In</a>
-          <a role="button" href="./registeration.html"
+          <a role="button" href="./registeration.html" id="registerLink"
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register</a>
         </div>
 
-        <ul class="space-y-2 font-medium">
+        <ul class="space-y-2 font-medium" id="sidebar-menue">
 
           <li>
             <a href="#"
@@ -35,43 +35,6 @@
                   d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
               </svg>
               <span class="ms-3">Home</span>
-            </a>
-          </li>
-          
-          <li>
-            <a href="#"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                  d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
-              </svg>
-              <span class="ms-3">Members</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z" />
-              </svg>
-              <span class="ms-3">Notification</span>
-            </a>
-          </li>
-          
-
-          <li>
-            <a href="#"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="m17 21-5-4-5 4V3.889a.92.92 0 0 1 .244-.629.808.808 0 0 1 .59-.26h8.333a.81.81 0 0 1 .589.26.92.92 0 0 1 .244.63V21Z" />
-              </svg>
-              <span class="ms-3">Saved</span>
             </a>
           </li>
 
@@ -154,6 +117,7 @@
           </li>
 
         </ul>
+
       </div>
     </aside>
 
@@ -381,7 +345,7 @@
               class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Red</span>
             <span
               class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Green</span>
-            
+          </div>
           <!-- body -->
           <div>
             <p class="my-4 text-gray-500 dark:text-gray-200">You’re looking at my new design right now. These are some iOS elements that I designed recently.🧢
@@ -512,9 +476,9 @@
   </div>
 
 
-  <script src="./darkmode.js"></script>
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   <script src="../node_modules/axios/dist/axios.js"></script>
   <script src="./home.js"></script>
+  <script src="./darkmode.js"></script>
 </body>
 </html>
