@@ -1,5 +1,6 @@
 const loginBtn = document.getElementById('login');
 const registerBtn = document.getElementById('register');
+
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const password = document.getElementById('password');
@@ -61,6 +62,7 @@ function loginFail(error) {
 function loginSuccess(response) {
   let profileInfo = response.data.user;
   localStorage.setItem('profile', JSON.stringify(profileInfo));
+  localStorage.setItem('token', response.data.token);
 
   const msgElement = document.getElementById('msg');
   msgElement.classList.add('text-green-500');

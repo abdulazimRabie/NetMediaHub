@@ -22,9 +22,16 @@ lightBtn.addEventListener("click", enableLightMode);
 darkBtn.addEventListener("click", enableDarkMode);
 systemBtn.addEventListener("click", enableSystemMode);
 
-window.onload = () => {
-  if (localStorage.getItem("theme") === "dark") enableDarkMode();
-  else enableLightMode();
+
+export function activeFavTheme() {
+  if (localStorage.getItem("theme") === "dark") {
+    console.log("dark enabled by default");
+    enableDarkMode();
+  }
+  else {
+    console.log("light enabled by default");
+    enableLightMode();
+  }
 }
 
 console.log('hi boddy');

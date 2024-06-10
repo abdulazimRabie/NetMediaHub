@@ -1,0 +1,79 @@
+export function showPosts(posts) {
+  const postsWrapper = document.getElementById("postsWrapper");
+
+  for (let post of posts) {
+    const html = `
+      <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px]">
+            <!-- header -->
+            <header class="flex justify-between items-center">
+              <!-- info -->
+              <div>
+                <div class="flex items-center gap-4">
+                  <div class="relative">
+                    <img class="w-10 h-10 rounded-full" src="${post.author.profile_image}" alt="">
+                    <span
+                      class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                  </div>
+  
+                  <div class="">
+  
+                    <div class="flex gap-2">
+                      <span class="font-medium dark:text-white">${post.author.name}</span>
+                      <div>
+                        <span class="font-medium text-blue-700">.</span>
+                        <span class="dark:text-gray-300">
+                          ${post.created_at}
+                        </span>
+                      </div>
+                    </div>
+  
+                    <div class="text-sm text-gray-500 dark:text-gray-400">${post.author.username}</div>
+  
+                  </div>
+                </div>
+              </div>
+  
+              <!-- follow -->
+              <button type="button"
+                class="text-white bg-black dark:bg-white dark:text-black  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Follow
+              </button>
+            </header>
+  
+            <!-- Tags -->
+            <div class="tags">
+              
+            </div>
+
+            <!-- body -->
+            <div>
+              <p class="my-4 text-gray-500 dark:text-gray-200">
+                ${post.body}
+              </p>
+              <img src="${post.image}" alt="" class="block my-2 rounded-md">
+            </div>
+
+            <!-- comments -->
+            <div class="mt-5 grid gap-3">
+              <span class="text-sm text-slate-400 block ">${post.comments_count} Commnets</span>
+            <div>
+        </div>
+      </div>
+    `;
+
+    postsWrapper.insertAdjacentHTML("beforeend", html);
+    const tagsWrapper = [...document.querySelectorAll('.tags')].pop();
+    const tagsColor = ['blue', 'gray', 'red', 'green'];
+
+    for(let i = 0, j = 0; i < post.tags.lenght; i++) {
+      let color = j >= 4 ? tagsColor[j = 0] : tagsColor[j++];
+      const tagHtml = `
+      <span
+        class="bg-${color}-100 text-${color}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-${color}-900 dark:text-${color}-300">${post.tags[i]}</span>
+      `;
+
+      tagsWrapper.insertAdjacentHTML('beforeend', tagHtml);
+    }
+  }
+
+}

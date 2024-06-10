@@ -1,103 +1,9 @@
-// https://tarmeezacademy.com/api/v1/posts?limit=50
-const baseUrl = 'https://tarmeezacademy.com/api/v1';
-const url = `${baseUrl}/posts?limit=50`;
-const loginLink = document.getElementById('loginLink');
-const registerLink = document.getElementById('registerLink');
-
-function fetchPosts() {
-  axios
-    .get(url)
-    .then(response => showPosts(response.data.data))
-    .catch(error => console.error('Error fetching posts:', error));
-}
-
-function showPosts(posts) {
-  const postsWrapper = document.getElementById("postsWrapper");
-
-  for (let post of posts) {
-    const html = `
-      <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px]">
-            <!-- header -->
-            <header class="flex justify-between items-center">
-              <!-- info -->
-              <div>
-                <div class="flex items-center gap-4">
-                  <div class="relative">
-                    <img class="w-10 h-10 rounded-full" src="${post.author.profile_image}" alt="">
-                    <span
-                      class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                  </div>
-  
-                  <div class="">
-  
-                    <div class="flex gap-2">
-                      <span class="font-medium dark:text-white">${post.author.name}</span>
-                      <div>
-                        <span class="font-medium text-blue-700">.</span>
-                        <span class="dark:text-gray-300">
-                          ${post.created_at}
-                        </span>
-                      </div>
-                    </div>
-  
-                    <div class="text-sm text-gray-500 dark:text-gray-400">${post.author.username}</div>
-  
-                  </div>
-                </div>
-              </div>
-  
-              <!-- follow -->
-              <button type="button"
-                class="text-white bg-black dark:bg-white dark:text-black  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Follow
-              </button>
-            </header>
-  
-            <!-- Tags -->
-            <div class="tags">
-              
-            </div>
-
-            <!-- body -->
-            <div>
-              <p class="my-4 text-gray-500 dark:text-gray-200">
-                ${post.body}
-              </p>
-              <img src="${post.image}" alt="" class="block my-2 rounded-md">
-            </div>
-
-            <!-- comments -->
-            <div class="mt-5 grid gap-3">
-              <span class="text-sm text-slate-400 block ">${post.comments_count} Commnets</span>
-            <div>
-        </div>
-      </div>
-    `
-
-    postsWrapper.insertAdjacentHTML("beforeend", html);
-    const tagsWrapper = [...document.querySelectorAll('.tags')].pop();
-    const tagsColor = ['blue', 'gray', 'red', 'green'];
-
-    for(let i = 0, j = 0; i < post.tags.lenght; i++) {
-      let color = j >= 4 ? tagsColor[j = 0] : tagsColor[j++];
-      const tagHtml = `
-      <span
-        class="bg-${color}-100 text-${color}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-${color}-900 dark:text-${color}-300">${post.tags[i]}</span>
-      `;
-
-      tagsWrapper.insertAdjacentHTML('beforeend', tagHtml);
-    }
-  }
-
-}
-
-// check if user has loggedin or not
-function userView() {
+export function userView() {
   const profile = JSON.parse(localStorage.getItem('profile'));
 
   if (profile) {
     intergrateProfileAvatar(profile);
-    intergratePostBtn();
+    intergratePostActions();
     integrateLogoutBtn();
 
     document.getElementById('logoutBtn').onclick = logout;
@@ -189,21 +95,93 @@ function intergrateProfileAvatar(profile) {
   sidebarContentEle.insertAdjacentHTML('afterbegin', avatarProfileHtml);
 }
 
-function intergratePostBtn() {
+function intergratePostActions() {
+  postLi();
+  postBox();
+  postBtn();
+}
+
+function postLi() {
   const sidebarMenue = document.getElementById('sidebar-menue');
   const newPostHtml = `
-  <li>
-    <a href="#"
-      class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+  <li class="hidden md:block">
+    <button data-modal-target="post-modal" data-modal-toggle="post-modal"
+      class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" type="button">
       <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
       </svg>
 
       <span class="ms-3">New Post</span>
-    </a>
+    </button>
   </li>
-  `
-  sidebarMenue.insertAdjacentHTML("afterbegin", newPostHtml)
+  `;
+  sidebarMenue.insertAdjacentHTML("afterbegin", newPostHtml);
+}
+
+function postBox() {
+  const postWrapper = document.getElementById('postsWrapper');
+  const postBoxHtml = `
+  <div class="hidden md:block w-full lg:w-[800px]">
+    <form>
+      <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-second dark:border-black-second">
+        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
+          <label for="comment" class="sr-only">Waht do you think about ?</label>
+          <textarea id="comment" rows="4"
+            class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-black focus:ring-0 dark:text-white dark:placeholder-white"
+            placeholder="Write a comment..." required></textarea>
+        </div>
+        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-black-second">
+          <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
+            <button type="button"
+              class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 9h.01M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM6.6 13a5.5 5.5 0 0 0 10.81 0H6.6Z" />
+              </svg>
+              <span class="sr-only">Choose emoji</span>
+            </button>
+            <button type="button"
+              class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 20 18">
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+              <span class="sr-only">Upload image</span>
+            </button>
+          </div>
+
+          <button type="submit"
+            class="inline-flex items-center py-2.5 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+            Post
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  `;
+
+  postWrapper.insertAdjacentHTML('afterbegin', postBoxHtml);
+}
+
+function postBtn() {
+  const content = document.getElementById('content');
+  const postBtnHtml = `
+  <div data-dial-init class="md:hidden fixed end-3 bottom-3 group" id="newPostIcon">
+    <button type="button" data-modal-target="post-modal" data-modal-toggle="post-modal"
+      aria-expanded="false"
+      class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+      <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+      </svg>
+      <span class="sr-only">Open post modal</span>
+    </button>
+  </div>
+  `;
+
+  content.insertAdjacentHTML('beforeend', postBtnHtml);
 }
 
 function integrateLogoutBtn() {
@@ -217,20 +195,6 @@ function integrateLogoutBtn() {
 
 function logout() {
   localStorage.removeItem('profile');
+  localStorage.removeItem('token');
   window.location.reload();
 }
-
-loginLink.onclick = function() {
-  localStorage.setItem('registeration', 'login');
-}
-
-registerLink.onclick = function() {
-  localStorage.setItem('registeration', 'register');
-}
-
-function init() {
-  fetchPosts();
-  userView();
-}
-
-window.onload = init();
