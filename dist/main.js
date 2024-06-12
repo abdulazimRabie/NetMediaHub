@@ -2,14 +2,21 @@ import { fetchPosts } from "./modules/fetchPosts.js";
 import { userView } from "./modules/user-view.js";
 import { activeFavTheme } from "./modules/darkmode.js";
 import { handleLoginLink, handleRegisterLink } from "./modules/authLinks.js";
+import { infiniteScroll } from "./modules/infiniteScroll.js";
 
 function init() {
   activeFavTheme();
-  fetchPosts();
-  userView();
+  fetchPosts(1);
+  
+  if (localStorage.getItem('profile')) userView();
+  else {
+    document.getElementById('loginLink').onclick = handleLoginLink;
+    document.getElementById('registerLink').onclick = handleRegisterLink;
+  }
+
+  window.addEventListener('scroll', infiniteScroll);
 }
 
-window.onload = init();
+// console.log(window.)
 
-document.getElementById('loginLink').onclick = handleLoginLink;
-document.getElementById('registerLink').onclick = handleRegisterLink;
+window.onload = init();

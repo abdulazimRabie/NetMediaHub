@@ -10,20 +10,18 @@
 </head>
 <body class="dark:bg-black">
 
-  <div class="w-5/6 lg:w-2/3 mx-auto h-screen justify-center place-content-center">
-    
+  <div class="w-5/6 lg:w-2/3 mx-auto min-h-screen p-10 justify-center place-content-center">
     <div class="grid gap-6">
       <h1 class="font-extrabold text-3xl dark:text-white">Social Network</h1>
-
       <div class="flex justify-center flex-wrap">
         <button type="button" id="login"
           class="grow basis-28 shrink-0 px-6 py-3.5 text-base font-medium text-black border border-gray-300 dark:border-gray-700 hover:bg-gray-50 rounded-lg text-center me-2 mb-2 dark:bg-black-second dark:text-white">Login</button>
         <button type="button" id="register"
           class="grow basis-28 shrink-0 px-6 py-3.5 text-base font-medium text-black border border-gray-300 dark:border-gray-700 hover:bg-gray-50 rounded-lg text-center me-2 mb-2 dark:bg-black-second dark:text-white">Register</button>
       </div>
-
       <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-black-second">
         <form class="max-w-sm mx-auto" id="form">
+          
           <div class="mb-5">
             <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Username</label>
             <input type="text" id="username"
@@ -35,11 +33,9 @@
             <input type="password" id="password"
               class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required />
-          </div>
-          
+          </div>      
           <button type="submit" data-type="login"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-
+            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full lg:w-fit">Submit</button>
           <span class="block my-3 " id="msg"></span>
         </form>
       </div>

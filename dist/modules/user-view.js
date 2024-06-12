@@ -1,3 +1,5 @@
+import { puplishingPost } from "./puplishPost.js"; 
+
 export function userView() {
   const profile = JSON.parse(localStorage.getItem('profile'));
 
@@ -5,6 +7,7 @@ export function userView() {
     intergrateProfileAvatar(profile);
     intergratePostActions();
     integrateLogoutBtn();
+    puplishingPost();
 
     document.getElementById('logoutBtn').onclick = logout;
   };
@@ -19,7 +22,7 @@ function intergrateProfileAvatar(profile) {
     class="relative flex items-center justify-between hover:cursor-pointer my-4 p-2 bg-white dark:bg-black-second border border-gray-800 dark:border-black rounded-lg">
     <div class="flex items-center gap-2">
       <div>
-        <img class="w-10 h-10 rounded-full" src="../assets/avatars/avatar_black_bg.jpg" alt="avatar">
+        <img class="w-10 h-10 rounded-full" src="${profile.profile_image}" alt="avatar">
         <span
           class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
       </div>
@@ -99,12 +102,13 @@ function intergratePostActions() {
   postLi();
   postBox();
   postBtn();
+  postModal();
 }
 
 function postLi() {
   const sidebarMenue = document.getElementById('sidebar-menue');
   const newPostHtml = `
-  <li class="hidden md:block">
+  <li class="hidden md:block bg-gradient-to-r from-green-400 via-blue-500 to-red-600 p-2">
     <button data-modal-target="post-modal" data-modal-toggle="post-modal"
       class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" type="button">
       <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -119,16 +123,19 @@ function postLi() {
 }
 
 function postBox() {
-  const postWrapper = document.getElementById('postsWrapper');
+  const postWrapper = document.getElementById('content').firstElementChild;
   const postBoxHtml = `
-  <div class="hidden md:block w-full lg:w-[800px]">
+  <div class="hidden md:block w-full lg:w-[800px] p-5 mx-auto">
     <form>
       <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-second dark:border-black-second">
         <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
           <label for="comment" class="sr-only">Waht do you think about ?</label>
-          <textarea id="comment" rows="4"
-            class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-black focus:ring-0 dark:text-white dark:placeholder-white"
+          <textarea id="postBoxTextArea" rows="4"
+            class="no-scrollbar w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-black focus:ring-0 dark:text-white dark:placeholder-white"
             placeholder="Write a comment..." required></textarea>
+        </div>
+        <div id="images-uploaded-box">
+          
         </div>
         <div class="flex items-center justify-between px-3 py-2 border-t dark:border-black-second">
           <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
@@ -141,19 +148,18 @@ function postBox() {
               </svg>
               <span class="sr-only">Choose emoji</span>
             </button>
-            <button type="button"
-              class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
-              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                viewBox="0 0 20 18">
-                <path
-                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+            <label for="inputImageBox" id="uploadImageBox"
+              class="flex gap-1 bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-2 outline-none rounded w-max cursor-pointer mx-auto font-[sans-serif]">
+              <svg class=" w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z" clip-rule="evenodd"/>
               </svg>
-              <span class="sr-only">Upload image</span>
-            </button>
+              Upload
+              <input type="file" id='inputImageBox' accept="image/*" class="hidden" />
+            </label>
           </div>
-
-          <button type="submit"
-            class="inline-flex items-center py-2.5 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+          <button type="submit" disabled id="postBoxPuplish"
+            class="pointer-events-none opacity-35 inline-flex items-center py-2.5 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
             Post
           </button>
         </div>
@@ -162,7 +168,7 @@ function postBox() {
   </div>
   `;
 
-  postWrapper.insertAdjacentHTML('afterbegin', postBoxHtml);
+  postWrapper.insertAdjacentHTML('afterend', postBoxHtml);
 }
 
 function postBtn() {
@@ -182,6 +188,80 @@ function postBtn() {
   `;
 
   content.insertAdjacentHTML('beforeend', postBtnHtml);
+}
+
+function postModal() {
+  const contentDiv = document.getElementById("content");
+  const modalPost = `
+  <div id="post-modal" tabindex="-1"
+    class="fixed top-0 left-0 md:left-1/2 md:translate-x-[-50%] z-50 hidden w-full md:w-[800px] md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full h-lvh md:h-fit">
+      <!-- Modal content -->
+      <div class="flex flex-col h-full md:block md:h-fit relative bg-white rounded-lg shadow dark:bg-black">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-800">
+          <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+            New Post
+          </h3>
+          <button type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-hide="post-modal">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="md:grow p-4 md:p-5 space-y-4">
+          <div class="w-full">
+            <form>
+              <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-second dark:border-black-second">
+                <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
+                  <label for="comment" class="sr-only">Waht do you think about ?</label>
+                  <textarea id="postPopupTextArea" rows="4"
+                    class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-black focus:ring-0 dark:text-white dark:placeholder-white"
+                    placeholder="Write a comment..." required></textarea>
+                </div>
+                <div id="images-uploaded-modal">
+                </div>
+                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-black-second">
+                  <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
+                    <button type="button"
+                      class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+                      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M15 9h.01M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM6.6 13a5.5 5.5 0 0 0 10.81 0H6.6Z" />
+                      </svg>
+                      <span class="sr-only">Choose emoji</span>
+                    </button>
+                    <label for="inputImageModal" id="uploadImageModal"
+                      class="flex gap-1 bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-2 outline-none rounded w-max cursor-pointer mx-auto font-[sans-serif]">
+                      <svg class=" w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z" clip-rule="evenodd"/>
+                      </svg>
+                      Upload
+                      <input type="file" id='inputImageModal' accept="image/*" class="hidden" />
+                    </label>
+                  </div>
+                  <button type="submit" id="postPopupPuplish" disabled
+                    class="pointer-events-none opacity-35 inline-flex items-center py-2.5 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                    Post
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+
+  contentDiv.insertAdjacentHTML('beforeend', modalPost);
 }
 
 function integrateLogoutBtn() {
