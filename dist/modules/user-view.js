@@ -1,19 +1,20 @@
 import { puplishingPost } from "./puplishPost.js"; 
 
 export function userView() {
-  const profile = JSON.parse(localStorage.getItem('profile'));
-
+  const profile = localStorage.getItem('profile');
   if (profile) {
     intergrateProfileAvatar(profile);
     intergratePostActions();
     integrateLogoutBtn();
     puplishingPost();
+    commentsAction();
 
     document.getElementById('logoutBtn').onclick = logout;
   };
 }
 
-function intergrateProfileAvatar(profile) {
+export function intergrateProfileAvatar(profile) {
+  profile = JSON.parse(profile);
   document.getElementById('login-register-wrapper').remove();
   const sidebarContentEle = document.getElementById('default-sidebar').firstElementChild;
   const avatarProfileHtml = `
@@ -108,7 +109,7 @@ function intergratePostActions() {
 function postLi() {
   const sidebarMenue = document.getElementById('sidebar-menue');
   const newPostHtml = `
-  <li class="hidden md:block bg-gradient-to-r from-green-400 via-blue-500 to-red-600 p-2">
+  <li class="hidden md:block p-2">
     <button data-modal-target="post-modal" data-modal-toggle="post-modal"
       class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" type="button">
       <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -262,6 +263,18 @@ function postModal() {
   `;
 
   contentDiv.insertAdjacentHTML('beforeend', modalPost);
+}
+
+function commentsAction() {
+  document.querySelectorAll('.comment-btn').forEach(comment => {
+    const post = comment.parentElement.parentElement;
+    comment.onclick = function() {
+      localStorage.setItem('postId',post.getAttribute('post-id'))
+      localStorage.setItem('postHTML', post.outerHTML);
+      window.location = './post.html';
+      console.log(comment);
+    }
+  });
 }
 
 function integrateLogoutBtn() {

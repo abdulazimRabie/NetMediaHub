@@ -1,4 +1,3 @@
-import { showComments } from "./commentsModal.js";
 const postsWrapper = document.getElementById("postsWrapper");
 
 export function showPosts(posts, position) {
@@ -10,7 +9,8 @@ export function showPosts(posts, position) {
 
 export function showPost(post, position) {
   const html = `
-    <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px]">
+    <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px]"
+    post-id='${post.id}'>
       <!-- header -->
       <header class="flex justify-between items-center">
         <!-- info -->
@@ -56,7 +56,10 @@ export function showPost(post, position) {
 
       <!-- comments -->
       <div class="mt-5 grid gap-3">
-        <span class="text-sm text-slate-400 block ">${post.comments_count} Commnets</span>
+        <button class="text-sm text-slate-400 block comment-btn">
+          <span>${post.comments_count}</span> 
+          Commnets
+        </button>
       <div>
     </div>
   </div>

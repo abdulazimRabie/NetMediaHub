@@ -4,9 +4,9 @@ import { activeFavTheme } from "./modules/darkmode.js";
 import { handleLoginLink, handleRegisterLink } from "./modules/authLinks.js";
 import { infiniteScroll } from "./modules/infiniteScroll.js";
 
-function init() {
+async function init() {
   activeFavTheme();
-  fetchPosts(1);
+  await fetchPosts(1);
   
   if (localStorage.getItem('profile')) userView();
   else {
