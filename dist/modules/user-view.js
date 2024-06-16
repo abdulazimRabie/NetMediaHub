@@ -1,4 +1,5 @@
 import { puplishingPost } from "./puplishPost.js"; 
+import { editPost } from "./editPost.js";
 
 export function userView() {
   const profile = localStorage.getItem('profile');
@@ -8,6 +9,7 @@ export function userView() {
     integrateLogoutBtn();
     puplishingPost();
     commentsAction();
+    editPost();
 
     document.getElementById('logoutBtn').onclick = logout;
   };
@@ -270,9 +272,7 @@ function commentsAction() {
     const post = comment.parentElement.parentElement;
     comment.onclick = function() {
       localStorage.setItem('postId',post.getAttribute('post-id'))
-      localStorage.setItem('postHTML', post.outerHTML);
       window.location = './post.html';
-      console.log(comment);
     }
   });
 }

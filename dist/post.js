@@ -1,6 +1,7 @@
 import { intergrateProfileAvatar } from "./modules/user-view.js";
 import { activeFavTheme } from "./modules/darkmode.js"
 import { showPost } from "./modules/showPosts.js";
+import { editPost } from "./modules/editPost.js";
 
 const postId = localStorage.getItem('postId');
 const postWrapper = document.getElementById('postsWrapper');
@@ -193,6 +194,7 @@ async function init() {
   textareaCheck();
   fetchComments();
   addComment();
+  editPost();
 }
 
 init();

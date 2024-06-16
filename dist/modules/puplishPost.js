@@ -42,7 +42,9 @@ function sendPost(textarea, inputImage, wrapper, removeimage, update) {
   let formdata = new FormData();
   formdata.append('body', postContent);
   formdata.append('title', null);
-  formdata.append('image', image)
+  if (image) {
+    formdata.append('image', image);
+  }
   
   const headers = {
     'Content-Type': 'multipart/form-data',
