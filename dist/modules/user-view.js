@@ -1,5 +1,7 @@
 import { puplishingPost } from "./puplishPost.js"; 
+import { showPostOptions } from "./editDeleteOption.js";
 import { editPost } from "./editPost.js";
+import { deletePost } from "./deletePost.js";
 
 export function userView() {
   const profile = localStorage.getItem('profile');
@@ -9,7 +11,9 @@ export function userView() {
     integrateLogoutBtn();
     puplishingPost();
     commentsAction();
+    showPostOptions();
     editPost();
+    deletePost();
 
     document.getElementById('logoutBtn').onclick = logout;
   };
@@ -177,9 +181,9 @@ function postBox() {
 function postBtn() {
   const content = document.getElementById('content');
   const postBtnHtml = `
-  <div data-dial-init class="md:hidden fixed end-3 bottom-3 group" id="newPostIcon">
+  <div data-dial-init class="md:hidden fixed end-3 bottom-3 group">
     <button type="button" data-modal-target="post-modal" data-modal-toggle="post-modal"
-      aria-expanded="false"
+      aria-expanded="false" id="newPostIcon"
       class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
       <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">

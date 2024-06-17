@@ -1,39 +1,12 @@
 // show edit button
 // enable edit button
-// save changes 
-// update post
-
 export function editPost() {
-  showEditBtn();
   editPostBtnClicked();
-}
-
-function showEditBtn() {
-  const posts = [...document.getElementById('postsWrapper').children];
-  posts.forEach(post => {
-    console.log(post);
-    const postAuthorId = post.getAttribute('author-id');
-    const userId = JSON.parse(localStorage.getItem('profile')).id;
-    if(postAuthorId == userId) {
-      
-      const editPostBtnHTML = `
-      <button class="p-2 text-gray-400 hover:text-gray-600 bg-white border border-gray-100 dark:text-gray-400 dark:hover:text-gray-100  dark:bg-black-second dark:border-gray-700 rounded-md flex justify-center items-center editPostBtn"
-      data-modal-target="edit-modal" data-modal-show="edit-modal">
-        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4.988 19.012 5.41-5.41m2.366-6.424 4.058 4.058-2.03 5.41L5.3 20 4 18.701l3.355-9.494 5.41-2.029Zm4.626 4.625L12.197 6.61 14.807 4 20 9.194l-2.61 2.61Z"/>
-        </svg>
-      </button>
-      `;
-
-      const header = post.querySelector('header');
-      header.insertAdjacentHTML('beforeend', editPostBtnHTML);
-    }
-  })
 }
 
 function editModal(post) {
   const profile = JSON.parse(localStorage.getItem('profile'));
-  let noPostImage = (post.image == "") ? 'hidden' : post.image;
+  let noPostImage = (post.image == "") ? 'hidden' : post.image; // image wrapper will appear or not
   const editModal = `
   <div id="edit-modal" tabindex="-1" aria-hidden="true"
     class="md:grid justify-center items-center overflow-y-scroll overflow-x-hidden fixed z-50 w-full h-full">
@@ -137,7 +110,7 @@ function editModal(post) {
 function editPostBtnClicked() {
   document.querySelectorAll('.editPostBtn').forEach(editPostBtn => {
     editPostBtn.onclick = function() {
-      const post = this.parentElement.parentElement;
+      const post = this.closest('div.post'); // li -> ul -> menue -> header -> post
       const postContet = post.querySelector('.user-post');
       const postImage = post.querySelector('.user-post-image');
 
@@ -172,7 +145,6 @@ function updateBtnClickd(post) {
     const textarea = document.getElementById('edited-post-textarea');
     const image = document.getElementById('edited-post-image');
     const token = localStorage.getItem('token');
-    console.log(postId, textarea, image, token);
 
     const url = `https://tarmeezacademy.com/api/v1/posts/${postId}`;
     const params = {
@@ -180,7 +152,7 @@ function updateBtnClickd(post) {
     };
 
     const headers = {
-      'authorization' : `Bearer ${token}`
+      'authorization' : `Bearer ${token}`,
     }
 
     axios

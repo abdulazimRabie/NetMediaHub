@@ -8,9 +8,11 @@ export function showPosts(posts, position) {
 }
 
 export function showPost(post, position) {
-  if (typeof post.image == 'object') post.image = "";
+  // if image is empty its value was => [object object] and i don't want this - i want it to be empty if there is no image
+  if (typeof post.image == 'object') post.image = ""; 
+  
   const html = `
-    <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px]"
+    <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px] post"
     post-id='${post.id}' author-id='${post.author.id}'>
       <!-- header -->
       <header class="flex justify-between items-center">
