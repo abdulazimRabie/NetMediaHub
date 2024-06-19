@@ -1,9 +1,9 @@
-import { intergrateProfileAvatar } from "./modules/user-view.js";
-import { activeFavTheme } from "./modules/darkmode.js"
-import { showPost } from "./modules/showPosts.js";
-import { showPostOptions } from "./modules/editDeleteOption.js";
-import { editPost } from "./modules/editPost.js";
-import { deletePost } from "./modules/deletePost.js";
+import { intergrateProfileAvatar } from "../modules/user-view.js";
+import { activeFavTheme } from "../modules/darkmode.js"
+import { showPost } from "../modules/showPosts.js";
+import { showPostOptions } from "../modules/editDeleteOption.js";
+import { editPost } from "../modules/editPost.js";
+import { deletePost } from "../modules/deletePost.js";
 
 const postId = localStorage.getItem('postId');
 const postWrapper = document.getElementById('postsWrapper');
@@ -176,7 +176,7 @@ function resetTextarea() {
 
 function increaseCommentsNumber() {
   console.log('increase');
-  const commentNumberSpan = document.querySelector('.comment-btn').firstElementChild;
+  const commentNumberSpan = document.querySelector('.comment-btn').querySelector('span');
   let newCommentsNumber = +commentNumberSpan.textContent;
   newCommentsNumber++;
   commentNumberSpan.textContent = newCommentsNumber;

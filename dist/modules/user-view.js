@@ -14,8 +14,6 @@ export function userView() {
     showPostOptions();
     editPost();
     deletePost();
-
-    document.getElementById('logoutBtn').onclick = logout;
   };
 }
 
@@ -23,11 +21,12 @@ export function intergrateProfileAvatar(profile) {
   profile = JSON.parse(profile);
   document.getElementById('login-register-wrapper').remove();
   const sidebarContentEle = document.getElementById('default-sidebar').firstElementChild;
+  const navbar = document.getElementById('content').querySelector('nav')
   const avatarProfileHtml = `
   <!-- Profile avatar -->
   <div
     class="relative flex items-center justify-between hover:cursor-pointer my-4 p-2 bg-white dark:bg-black-second border border-gray-800 dark:border-black rounded-lg">
-    <div class="flex items-center gap-2">
+    <a class="flex items-center gap-2" href="profile.html?userId=${profile.id}">
       <div>
         <img class="w-10 h-10 rounded-full" src="${profile.profile_image}" alt="avatar">
         <span
@@ -36,7 +35,7 @@ export function intergrateProfileAvatar(profile) {
       <div class="font-medium dark:text-white">
         <h2>${profile.name}</h2>
       </div>
-    </div>
+    </a>
     <!-- : icon -> dropdown -->
     <div>
       <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" data-dropdown-placement="right-end"
@@ -102,7 +101,15 @@ export function intergrateProfileAvatar(profile) {
     </div>
   </div>
   `
+  const avatarNavbar = `
+  <div id="navbar-user-image">
+    <a href="profile.html?userId=${profile.id}">
+      <img src="${profile.profile_image}" alt="" class="w-8 h-8 block me-3 rounded-full">
+    </a>
+  </div>
+  `
   sidebarContentEle.insertAdjacentHTML('afterbegin', avatarProfileHtml);
+  navbar.insertAdjacentHTML('beforeend', avatarNavbar);
 }
 
 function intergratePostActions() {
@@ -130,24 +137,26 @@ function postLi() {
 }
 
 function postBox() {
-  const postWrapper = document.getElementById('content').firstElementChild;
+  const postWrapper = document.getElementById('postsWrapper');
+  const profile = JSON.parse(localStorage.getItem('profile'));
   const postBoxHtml = `
   <div class="hidden md:block w-full lg:w-[800px] p-5 mx-auto">
     <form>
-      <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-second dark:border-black-second">
-        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
+      <div class="w-full mb-4 rounded-lg bg-gray-50 dark:bg-black-third">
+        <div class="overflow-hidden">
+          <img src="${profile.profile_image}" class="w-8 h-8 rounded-full ml-5 mt-5"></img>
           <label for="comment" class="sr-only">Waht do you think about ?</label>
           <textarea id="postBoxTextArea" rows="4"
-            class="no-scrollbar w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-black focus:ring-0 dark:text-white dark:placeholder-white"
-            placeholder="Write a comment..." required></textarea>
+            class="no-scrollbar resize-none textarea rounded-lg w-full p-5 text-md text-gray-900 bg-gray-50 border-0 dark:bg-[#151515] focus:ring-0 dark:text-white dark:placeholder-white"
+            placeholder="What do think about ..." required></textarea>
         </div>
         <div id="images-uploaded-box">
           
         </div>
-        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-black-second">
+        <div class="flex items-center justify-between px-3 py-2">
           <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
             <button type="button"
-              class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+              class="inline-flex justify-center items-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
               <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -156,17 +165,16 @@ function postBox() {
               <span class="sr-only">Choose emoji</span>
             </button>
             <label for="inputImageBox" id="uploadImageBox"
-              class="flex gap-1 bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-2 outline-none rounded w-max cursor-pointer mx-auto font-[sans-serif]">
+              class="flex gap-1 hover:bg-gray-700 text-gray-800 text-base px-5 py-1 outline-none rounded w-max cursor-pointer mx-auto font-[sans-serif]">
               <svg class=" w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
                 <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z" clip-rule="evenodd"/>
               </svg>
-              Upload
               <input type="file" id='inputImageBox' accept="image/*" class="hidden" />
             </label>
           </div>
           <button type="submit" disabled id="postBoxPuplish"
-            class="pointer-events-none opacity-35 inline-flex items-center py-2.5 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+            class="pointer-events-none opacity-35 inline-flex items-center py-1 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
             Post
           </button>
         </div>
@@ -175,7 +183,7 @@ function postBox() {
   </div>
   `;
 
-  postWrapper.insertAdjacentHTML('afterend', postBoxHtml);
+  postWrapper.insertAdjacentHTML('beforebegin', postBoxHtml);
 }
 
 function postBtn() {
@@ -224,7 +232,7 @@ function postModal() {
         <div class="md:grow p-4 md:p-5 space-y-4">
           <div class="w-full">
             <form>
-              <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-second dark:border-black-second">
+              <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-third dark:border-black-second">
                 <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
                   <label for="comment" class="sr-only">Waht do you think about ?</label>
                   <textarea id="postPopupTextArea" rows="4"
@@ -271,7 +279,7 @@ function postModal() {
   contentDiv.insertAdjacentHTML('beforeend', modalPost);
 }
 
-function commentsAction() {
+export function commentsAction() {
   document.querySelectorAll('.comment-btn').forEach(comment => {
     const post = comment.parentElement.parentElement;
     comment.onclick = function() {
@@ -281,16 +289,17 @@ function commentsAction() {
   });
 }
 
-function integrateLogoutBtn() {
+export function integrateLogoutBtn() {
   const sidebarContent = document.getElementById('default-sidebar').firstElementChild;
   const html = `
   <button type="button" id='logoutBtn' class="block my-3 w-full text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Logout</button>
   `;
 
   sidebarContent.insertAdjacentHTML('beforeend', html);
+  document.getElementById('logoutBtn').onclick = logout;
 }
 
-function logout() {
+export function logout() {
   localStorage.removeItem('profile');
   localStorage.removeItem('token');
   window.location.reload();

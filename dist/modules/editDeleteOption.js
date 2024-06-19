@@ -1,4 +1,5 @@
 export function showPostOptions() {
+  console.log("show post options are on now");
   const posts = [...document.getElementById('postsWrapper').children];
   posts.forEach(post => {
     console.log(post);

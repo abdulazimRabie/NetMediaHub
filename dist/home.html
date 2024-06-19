@@ -6,7 +6,7 @@
   <title>S.Network</title>
 
   <link rel="stylesheet" href="../src/output.css">
-  <link rel="stylesheet" href="./hom.css">
+  <link rel="stylesheet" href="./CSS/hom.css">
   <!-- <link type="image/png" sizes="32x32" rel="icon" href="../assets/favicon/icons8-internet-gradient-32.png"> -->
   <link type="image/png" sizes="96x96" rel="icon" href="../assets/favicon/icons8-internet-gradient-96.png">
 </head>
@@ -16,7 +16,7 @@
     <aside id="default-sidebar"
       class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform duration-500 -translate-x-full md:translate-x-0"
       aria-label="Sidebar">
-      <div class="h-full px-5 py-4 bg-gray-50 dark:bg-black overflow-y-scroll overflow-x-hidden no-scrollbar">
+      <div class="px-5 py-4 m-2 h-[calc(100%-1rem)] border border-gray-100 dark:border-black-second rounded-lg bg-gray-50 dark:bg-black overflow-y-scroll overflow-x-hidden no-scrollbar">
 
         <div class="grid gap-3 p-2 my-3" id="login-register-wrapper">
           <a role="button" href="./registeration.html" id="loginLink"
@@ -28,7 +28,7 @@
         <ul class="space-y-2 font-medium" id="sidebar-menue">
 
           <li>
-            <a href="#"
+            <a href="home.html"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <svg class="w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" fill="none" viewBox="0 0 24 24">
@@ -124,10 +124,10 @@
 
     <!-- content -->
     <div class="md:pl-64 min-h-lvh dark:bg-black" id="content">
-      <nav class="grid items-center grid-cols-[auto,1fr] md:grid-cols-1 border-b border-b-gray-200 py-4 bg-white dark:bg-black dark:border-b-black sticky z-10 top-0">
+      <nav class="grid items-center grid-cols-[auto,1fr,auto] md:grid-cols-[1fr,auto] border-b border-b-gray-200 py-4 bg-white dark:bg-black dark:border-b-black sticky z-10 top-0">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
           type="button"
-          class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          class="inline-flex items-center p-2 ms-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
           <span class="sr-only">Open sidebar</span>
           <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" fill="none" viewBox="0 0 24 24">
@@ -295,11 +295,18 @@
             </div>
           </div>
         </div>
+
+        <!-- <div id="navbar-user-image">
+          <a href="">
+            <img src="../assets/avatars/download.jpg" alt="" class="w-8 h-8 block me-3 rounded-full">
+          </a>
+        </div> -->
       </nav>
 
       
       <!-- Posts -->
-      <div class="p-5 grid grid-cols-1 justify-center justify-items-center gap-3 bg-gray-100 dark:bg-black" id="postsWrapper">
+      <div class="p-5 m-1 md:m-2 rounded-md grid grid-cols-1 justify-center justify-items-center gap-3 bg-gray-100 dark:bg-black" 
+      id="postsWrapper">
 
         <!-- <div class="hidden md:blcok w-full lg:w-[800px]">
           <form>
@@ -529,7 +536,7 @@
   <!--<script src="./user-view.js" type="module"></script> -->
 
 
-  <script src="./main.js" type="module"></script>
+  <script src="./js/main.js" type="module"></script>
 
 
 </body>

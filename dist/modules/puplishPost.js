@@ -2,6 +2,9 @@
 import { showPost } from "./showPosts.js";
 import { updatePuplishingStateBox, updatePuplishingStateModal } from "./puplishingState.js";
 import { uploadImage, removeUploadedImage } from "./uploadImage.js";
+import { showPostOptions } from "./editDeleteOption.js";
+import { editPost } from "./editPost.js";
+import { deletePost } from "./deletePost.js";
 
 export function puplishingPost() {
   const textareaBox = document.getElementById('postBoxTextArea');
@@ -57,6 +60,9 @@ function sendPost(textarea, inputImage, wrapper, removeimage, update) {
   })
   .then(response => showPost(response.data.data, 'up'))
   .then(_ => resetPost(textarea, removeimage,inputImage, wrapper,update))
+  .then(_ => showPostOptions())
+  .then(_ => editPost())
+  .then(_ => deletePost())
   .catch(error => console.log(error))
 
   // handle response 
