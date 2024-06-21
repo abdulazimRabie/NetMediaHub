@@ -12,7 +12,7 @@ export function showPost(post, position) {
   if (typeof post.image == 'object') post.image = ""; 
   
   const html = `
-  <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 w-full lg:w-[800px] post"
+  <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 m-3 w-[calc(100%-1.50rem)] post"
   post-id='${post.id}' author-id='${post.author.id}'>
     <!-- header -->
     <header class="flex justify-between items-center">
@@ -58,8 +58,8 @@ export function showPost(post, position) {
     </div>
 
     <!-- comments -->
-    <div class="mt-5 grid gap-3">
-      <button class="text-sm black py-2 px-5 w-fit rounded-md flex justify-center items-center gap-x-2 text-black bg-gray-100 dark:text-white dark:bg-black-third  comment-btn">
+    <div class="mt-5 grid">
+      <button class="text-sm black py-2 px-5 w-fit rounded-md flex justify-center items-center gap-x-2 text-black bg-gray-100 dark:text-white dark:bg-black-third hover:bg-gray-200 dark:hover:bg-black-second comment-btn">
         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
           <path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd"/>
           <path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd"/>

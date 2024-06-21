@@ -19,9 +19,9 @@
       <div class="px-5 py-4 m-2 h-[calc(100%-1rem)] border border-gray-100 dark:border-black-second rounded-lg bg-gray-50 dark:bg-black overflow-y-scroll overflow-x-hidden no-scrollbar">
 
         <div class="grid gap-3 p-2 my-3" id="login-register-wrapper">
-          <a role="button" href="./registeration.html" id="loginLink"
+          <a role="button" href="./registeration.html?type=login" id="loginLink"
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Log In</a>
-          <a role="button" href="./registeration.html" id="registerLink"
+          <a role="button" href="./registeration.html?type=register" id="registerLink"
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register</a>
         </div>
 
@@ -122,407 +122,229 @@
       </div>
     </aside>
 
+    
     <!-- content -->
-    <div class="md:pl-64 min-h-lvh dark:bg-black" id="content">
-      <nav class="grid items-center grid-cols-[auto,1fr,auto] md:grid-cols-[1fr,auto] border-b border-b-gray-200 py-4 bg-white dark:bg-black dark:border-b-black sticky z-10 top-0">
-        <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
-          type="button"
-          class="inline-flex items-center p-2 ms-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-          <span class="sr-only">Open sidebar</span>
-          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
-          </svg>
-        </button>
-  
-        <div class="justify-self-center">
-
-          <button data-modal-target="search-modal" data-modal-toggle="search-modal"
-            class="flex gap-3 w-80 text-gray-400 bg-white border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black-second dark:border-black dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-            type="button">
+    <div class="md:pl-64 lg:pr-64 min-h-lvh dark:bg-black overflow-hidden" id="content">
+        <nav
+          class="grid items-center grid-cols-[auto,1fr,auto] md:grid-cols-[1fr,auto] border-b border-b-gray-200 py-4 bg-white dark:bg-black dark:border-b-black sticky z-10 top-0">
+          <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+            type="button"
+            class="inline-flex items-center p-2 ms-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+            <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z" />
-              <path fill-rule="evenodd"
-                d="M21.707 21.707a1 1 0 0 1-1.414 0l-3.5-3.5a1 1 0 0 1 1.414-1.414l3.5 3.5a1 1 0 0 1 0 1.414Z"
-                clip-rule="evenodd" />
+              height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
             </svg>
-
-            <span>
-              Search
-            </span>
           </button>
-
-          <!-- Main modal -->
-          <div id="search-modal" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-2xl max-h-full">
-              <!-- Modal content -->
-              <div class="relative bg-white rounded-lg shadow dark:bg-black">
-                <!-- Modal header -->
-                <div class="w-full">
-                  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                  <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                      </svg>
-                    </div>
-                    <input type="search" id="default-search"
-                      class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-200 rounded-t-lg focus:border-gray-200 dark:bg-black dark:border-gray-600 dark:placeholder-gray-200 dark:text-white  dark:focus:border-gray-700"
-                      placeholder="Search Mockups, Logos..." required />
-                  </div>
-                </div>
-
-                <!-- Modal body -->
-                <div class="p-4 md:p-5 space-y-4 dark:bg-balck">
-                  <div class="grid gap-3">
-                    <!-- iam looking for -->
-                    <div>
-                      <div class="mb-2"><span class="text-sm text-gray-500 dark:text-gray-400">I'm looking for ...</span></div>
-                      <div>
-                        <span id="badge-dismiss-reactions"
-                          class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
-                          <!-- icon -->
-                          <svg class="w-[19px] h-[19px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                              d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z" />
-                          </svg>
-                  
-                          Reactions
-                  
-                          <!-- close button -->
-                          <button type="button"
-                            class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-full hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
-                            data-dismiss-target="#badge-dismiss-reactions" aria-label="Remove">
-                            <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Remove badge</span>
-                          </button>
-                        </span>
-                  
-                        <span id="badge-dismiss-people"
-                          class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
-                          <!-- icon -->
-                          <svg class="w-[19px] h-[19px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                              d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                  
-                          People
-                  
-                          <!-- close button -->
-                          <button type="button"
-                            class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-full hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
-                            data-dismiss-target="#badge-dismiss-people" aria-label="Remove">
-                            <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Remove badge</span>
-                          </button>
-                        </span>
-                  
-                        <span id="badge-dismiss-copany"
-                          class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
-                          <!-- icon -->
-                          <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                              d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
-                              clip-rule="evenodd" />
-                          </svg>
-
-                  
-                          Companies
-                  
-                          <!-- close button -->
-                          <button type="button"
-                            class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-full hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
-                            data-dismiss-target="#badge-dismiss-copany" aria-label="Remove">
-                            <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Remove badge</span>
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  
-                    <!-- last search -->
-                    <div>
-                      <div class="mb-2"><span class="text-sm text-gray-500 dark:text-gray-400">Last search <span
-                            class="text-gray-900 dark:text-gray-300 font-medium">3</span></span></div>
-                      <div class="grid">
-                  
-                        <div class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
-                          <img class="w-5 h-5 rounded-full" src="../assets/avatars/download.jpg" alt="">
-                          <div class="flex items-center gap-1 font-medium dark:text-white">
-                            <div>Yahia Rabie</div>
-                            <span class="text-gray-500 text-sm">yaya@outlook.com</span>
-                          </div>
-                        </div>
-                        <div class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
-                          <img class="w-5 h-5 rounded-full" src="../assets/avatars/gril-yellow.jpg" alt="">
-                          <div class="flex items-center gap-1 font-medium dark:text-white">
-                            <div>Abdulazim Rabie</div>
-                            <span class="text-gray-500 text-sm">a.a@outlook.com</span>
-                          </div>
-                        </div>
-                        <div class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
-                          <img class="w-5 h-5 rounded-full" src="../assets/avatars/girl-brown.jpg" alt="">
-                          <div class="flex items-center gap-1 font-medium dark:text-white">
-                            <div>Manar Rabie</div>
-                            <span class="text-gray-500 text-sm">m.m@outlook.com</span>
-                          </div>
-                        </div>
-                
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal footer -->
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- <div id="navbar-user-image">
-          <a href="">
-            <img src="../assets/avatars/download.jpg" alt="" class="w-8 h-8 block me-3 rounded-full">
-          </a>
-        </div> -->
-      </nav>
-
-      
-      <!-- Posts -->
-      <div class="p-5 m-1 md:m-2 rounded-md grid grid-cols-1 justify-center justify-items-center gap-3 bg-gray-100 dark:bg-black" 
-      id="postsWrapper">
-
-        <!-- <div class="hidden md:blcok w-full lg:w-[800px]">
-          <form>
-            <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-black-second dark:border-black-second">
-              <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-black">
-                <label for="comment" class="sr-only">Waht do you think about ?</label>
-                <textarea id="comment" rows="4"
-                  class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-black focus:ring-0 dark:text-white dark:placeholder-white"
-                  placeholder="Write a comment..." required></textarea>
-              </div>
-              <div class="flex items-center justify-between px-3 py-2 border-t dark:border-black-second">
-                <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
-                  <button type="button"
-                    class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                      height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 9h.01M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM6.6 13a5.5 5.5 0 0 0 10.81 0H6.6Z" />
-                    </svg>
-                    <span class="sr-only">Choose emoji</span>
-                  </button>
-                  <button type="button"
-                    class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                      viewBox="0 0 20 18">
-                      <path
-                        d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                    </svg>
-                    <span class="sr-only">Upload image</span>
-                  </button>
-                </div>
-
-                <button type="submit"
-                  class="inline-flex items-center py-2.5 px-9 text-md font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                  Post
-                </button>
-              </div>
-            </div>
-          </form>
-        </div> -->
-
-        <!-- Post -->
-        <div class="grid gap-2 bg-white dark:bg-black-second border rounded-lg border-gray-100 dark:border-black shadow-sm p-5 lg:w-[800px]">
-          <!-- header -->
-          <header class="flex justify-between items-center">
-            <!-- info -->
-            <div>
-              <div class="flex items-center gap-4">
-                <div class="relative">
-                  <img class="w-10 h-10 rounded-full" src="../assets/avatars/gril-yellow.jpg" alt="">
-                  <span
-                    class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                </div>
-
-                <div class="">
-
-                  <div class="flex gap-2">
-                    <span class="font-medium dark:text-white">Karim Omar</span>
-                    <div>
-                      <span class="font-medium text-blue-700">.</span>
-                      <span class="dark:text-gray-300">8:23 AM</span>
-                    </div>
-                  </div>
-
-                  <div class="text-sm text-gray-500 dark:text-gray-400">karim.o@dribble.com</div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- follow -->
-            <button type="button"
-              class="text-white bg-black dark:bg-white dark:text-black  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-              Follow
-            </button>
-          </header>
-
-          <!-- Tags -->
-          <div>
-            <span
-              class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Default</span>
-            <span
-              class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Dark</span>
-            <span
-              class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Red</span>
-            <span
-              class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Green</span>
-          </div>
-          <!-- body -->
-          <div>
-            <p class="my-4 text-gray-500 dark:text-gray-200">You’re looking at my new design right now. These are some iOS elements that I designed recently.🧢
-                Hope you like this design too!😉
-            </p>
-            <img src="https://images.tarmeezacademy.com/users/wGQCkZs1dlm4OZp.jpg" alt="" class="block my-2 rounded-md">
-          </div>
-          <!-- reactions -->
-          <div class="flex gap-1">
-            <span
-              class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
-              <span>❤</span>
-              <span>12</span>
-            </span>
-            <span
-              class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
-              <span>🎯</span>
-              <span>40</span>
-            </span>
-            <span
-              class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
-              <span>😛</span>
-              <span>20</span>
-            </span>
-          </div>
-
-          <!-- comments -->
-          <div class="mt-5 grid gap-3">
-            <span class="text-sm text-slate-400 block ">130 Commnets</span>
-
-            <!-- commnet -->
-            <div >
-              <header>
-                <div class="p-1 rounded-md flex flex-wrap items-center gap-1 hover:cursor-pointer">
-                  <img class="w-7 h-7 rounded-full mr-1" src="../assets/avatars/girl.jpg" alt="">
-                  <div class="font-medium dark:text-white">
-                    <div>Manar Mohamed</div>
-                  </div>
-                  <span class="text-gray-500 tex-sm">m.r.m@outlook.com</span>
-                </div>
-              </header>
-              <!-- comment body -->
-              <div>
-                <p class="pl-10 text-gray-500 dark:text-gray-200">We have been passionated following all hot ternds in design industry</p>
-              </div>
-
-              <!-- Comments reaction -->
-              
-            </div>
-
-            <div >
-              <header>
-                <div class="p-1 rounded-md flex flex-wrap items-center gap-1 hover:cursor-pointer">
-                  <img class="w-7 h-7 rounded-full mr-1" src="../assets/avatars/girl-brown.jpg" alt="">
-                  <div class="font-medium dark:text-white">
-                    <div>Manar Mohamed</div>
-                  </div>
-                  <span class="text-gray-500 tex-sm">m.r.m@outlook.com</span>
-                </div>
-              </header>
-              <!-- comment body -->
-              <div>
-                <p class="pl-10 text-gray-500 dark:text-gray-200">We have been passionated following all hot ternds in design industry</p>
-              </div>
-
-              <!-- Comments reaction -->
-              <div class="flex gap-1 pl-10 mt-2">
-                <span class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
-                  <span>❤</span>
-                  <span>12</span>
-                </span>
-                <span class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
-                  <span>🎯</span>
-                  <span>40</span>
-                </span>
-                <span class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300 cursor-pointer">
-                  <span>😛</span>
-                  <span>20</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- type a comment -->
-          <form>
-            <label for="chat" class="sr-only">Your message</label>
-            <div class="flex items-center mt-3 px-3 py-2 rounded-lg bg-gray-50 dark:bg-black-second">
-              <button type="button"
-                class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                  <path fill="currentColor"
-                    d="M13 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM7.565 7.423 4.5 14h11.518l-2.516-3.71L11 13 7.565 7.423Z" />
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M18 1H2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z" />
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM7.565 7.423 4.5 14h11.518l-2.516-3.71L11 13 7.565 7.423Z" />
-                </svg>
-                <span class="sr-only">Upload image</span>
-              </button>
-              <button type="button"
-                class="p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13.408 7.5h.01m-6.876 0h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM4.6 11a5.5 5.5 0 0 0 10.81 0H4.6Z" />
-                </svg>
-                <span class="sr-only">Add emoji</span>
-              </button>
-              <textarea id="chat" rows="1"
-                class="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-0 dark:bg-black-second dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Your Comment ..."></textarea>
-              <button type="submit"
-                class="inline-flex justify-center p-2 text-black dark:text-white rounded cursor-pointer hover:bg-blue-100 dark:text-white dark:hover:bg-gray-600">
-                <svg class="w-5 h-5 rotate-90 rtl:-rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor" viewBox="0 0 18 20">
-                  <path
-                    d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z" />
-                </svg>
-                <span class="sr-only">Send message</span>
-              </button>
-            </div>
-          </form>
-
         
+          <div class="justify-self-center">
+        
+            <button data-modal-target="search-modal" data-modal-toggle="search-modal"
+              class="flex gap-3 w-80 text-gray-400 bg-white border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black-second dark:border-black dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+              type="button">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z" />
+                <path fill-rule="evenodd"
+                  d="M21.707 21.707a1 1 0 0 1-1.414 0l-3.5-3.5a1 1 0 0 1 1.414-1.414l3.5 3.5a1 1 0 0 1 0 1.414Z"
+                  clip-rule="evenodd" />
+              </svg>
+        
+              <span>
+                Search
+              </span>
+            </button>
+        
+            <!-- Main modal -->
+            <div id="search-modal" tabindex="-1" aria-hidden="true"
+              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+              <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-black">
+                  <!-- Modal header -->
+                  <div class="w-full">
+                    <label for="default-search"
+                      class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                      </div>
+                      <input type="search" id="default-search"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-200 rounded-t-lg focus:border-gray-200 dark:bg-black dark:border-gray-600 dark:placeholder-gray-200 dark:text-white  dark:focus:border-gray-700"
+                        placeholder="Search Mockups, Logos..." required />
+                    </div>
+                  </div>
+        
+                  <!-- Modal body -->
+                  <div class="p-4 md:p-5 space-y-4 dark:bg-balck">
+                    <div class="grid gap-3">
+                      <!-- iam looking for -->
+                      <div>
+                        <div class="mb-2"><span class="text-sm text-gray-500 dark:text-gray-400">I'm looking for ...</span>
+                        </div>
+                        <div>
+                          <span id="badge-dismiss-reactions"
+                            class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
+                            <!-- icon -->
+                            <svg class="w-[19px] h-[19px] text-gray-800 dark:text-white" aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                              <path
+                                d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z" />
+                            </svg>
+        
+                            Reactions
+        
+                            <!-- close button -->
+                            <button type="button"
+                              class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-full hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
+                              data-dismiss-target="#badge-dismiss-reactions" aria-label="Remove">
+                              <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                              </svg>
+                              <span class="sr-only">Remove badge</span>
+                            </button>
+                          </span>
+        
+                          <span id="badge-dismiss-people"
+                            class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
+                            <!-- icon -->
+                            <svg class="w-[19px] h-[19px] text-gray-800 dark:text-white" aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                              <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
+                                clip-rule="evenodd" />
+                            </svg>
+        
+                            People
+        
+                            <!-- close button -->
+                            <button type="button"
+                              class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-full hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
+                              data-dismiss-target="#badge-dismiss-people" aria-label="Remove">
+                              <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                              </svg>
+                              <span class="sr-only">Remove badge</span>
+                            </button>
+                          </span>
+        
+                          <span id="badge-dismiss-copany"
+                            class="inline-flex gap-1 items-center rounded-full my-1 px-3 py-1 me-2 text-sm text-gray-800 bg-white dark:bg-gray-700 dark:text-gray-300">
+                            <!-- icon -->
+                            <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                              <path fill-rule="evenodd"
+                                d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
+                                clip-rule="evenodd" />
+                            </svg>
+        
+        
+                            Companies
+        
+                            <!-- close button -->
+                            <button type="button"
+                              class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-full hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300"
+                              data-dismiss-target="#badge-dismiss-copany" aria-label="Remove">
+                              <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                              </svg>
+                              <span class="sr-only">Remove badge</span>
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+        
+                      <!-- last search -->
+                      <div>
+                        <div class="mb-2"><span class="text-sm text-gray-500 dark:text-gray-400">Last search <span
+                              class="text-gray-900 dark:text-gray-300 font-medium">3</span></span></div>
+                        <div class="grid">
+        
+                          <div
+                            class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                            <img class="w-5 h-5 rounded-full" src="../assets/avatars/download.jpg" alt="">
+                            <div class="flex items-center gap-1 font-medium dark:text-white">
+                              <div>Yahia Rabie</div>
+                              <span class="text-gray-500 text-sm">yaya@outlook.com</span>
+                            </div>
+                          </div>
+                          <div
+                            class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                            <img class="w-5 h-5 rounded-full" src="../assets/avatars/gril-yellow.jpg" alt="">
+                            <div class="flex items-center gap-1 font-medium dark:text-white">
+                              <div>Abdulazim Rabie</div>
+                              <span class="text-gray-500 text-sm">a.a@outlook.com</span>
+                            </div>
+                          </div>
+                          <div
+                            class="p-2 rounded-md flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                            <img class="w-5 h-5 rounded-full" src="../assets/avatars/girl-brown.jpg" alt="">
+                            <div class="flex items-center gap-1 font-medium dark:text-white">
+                              <div>Manar Rabie</div>
+                              <span class="text-gray-500 text-sm">m.m@outlook.com</span>
+                            </div>
+                          </div>
+        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal footer -->
+        
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        
+        <!-- Error -->
+        <div class="hidden justify-center gap-2 my-5 mx-3" id="error-msg">
+          <img src="../assets/landingPageImages/corocodile.jpg" alt="" class="w-20 h-20 blaock rounded-md justify-self-center">
+          <span class="dark:text-white text-center grid text-xl font-bold">
+            <span>Error <span class="text-black">😁</span></span>
+            <span>Something Went Wrong</span>
+          </span>
         </div>
+        
+        <!-- Posts -->
+        <div
+          class="m-1 md:m-3 rounded-md grid grid-cols-1 justify-center justify-items-center  bg-gray-100 dark:bg-black"
+          id="postsWrapper">
+        </div>
+        
+        <!-- Spinner -->
+        <div role="status" id="spinner" class="hidden justify-center items-center pt-1">
+          <svg aria-hidden="true"
+            class="inline w-8 h-8 md:w-10 md-h-10 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+            viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="currentColor" />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentFill" />
+          </svg>
+          <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="hidden lg:block fixed top-0 right-0 w-64 h-screen transition-transform duration-500 -translate-x-full md:translate-x-0">
+      <div class="px-5 py-4 m-2 h-[calc(100%-1rem)] border border-gray-100 dark:border-black-second rounded-lg bg-gray-50 dark:bg-black overflow-y-scroll overflow-x-hidden no-scrollbar">
+        <h3 class="dark:text-white font-bold text-lg my-3">Tags</h3>
+        <ul class="grid gap-3 text white dark:text-black" id="tags">
+        </ul>
       </div>
-
-      <!-- Post Modal -->
-
     </div>
 
   </div>
@@ -541,3 +363,5 @@
 
 </body>
 </html>
+
+

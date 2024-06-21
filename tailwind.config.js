@@ -9,8 +9,12 @@ module.exports = {
     extend: {
       colors: {
         'black-second': '#bdbdbd2b',
-        'black-third' : '#7d7c7c2b'
+        'black-third' : '#7d7c7c2b',
+        'fr-300' : '1fr 300px'
       },
+      fontFamily: {
+        'Playfair' : ["Playfair Display", "serif"]
+      }
     },
   },
   plugins: [

@@ -4,6 +4,9 @@ import { showPost } from "../modules/showPosts.js";
 import { showPostOptions } from "../modules/editDeleteOption.js";
 import { editPost } from "../modules/editPost.js";
 import { deletePost } from "../modules/deletePost.js";
+import { toggleSpinner } from "../modules/toggleLoader.js";
+import { toggleErrorMsg } from "../modules/toggleErrorMsg.js";
+import { showTags } from "../modules/tags.js";
 
 const postId = localStorage.getItem('postId');
 const postWrapper = document.getElementById('postsWrapper');
@@ -19,11 +22,17 @@ function enableTheme() {
 function fetchPost() {
   return new Promise((resolve , reject) => {
     const url = `https://tarmeezacademy.com/api/v1/posts/${postId}`;
+    toggleSpinner();
     axios
     .get(url)
     .then(response => showPost(response.data.data, 'up'))
     .then(_ => commentsAction())
-    .then (_ => resolve());
+    .then (_ => resolve())
+    .catch(_ => {
+      toggleErrorMsg();
+      reject()
+    })
+    .finally(_ => toggleSpinner());
   })
 }
 
@@ -199,6 +208,7 @@ async function init() {
   showPostOptions();
   editPost();
   deletePost();
+  showTags();
 }
 
 init();

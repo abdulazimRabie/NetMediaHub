@@ -4,11 +4,12 @@ import { activeFavTheme } from "../modules/darkmode.js";
 import { handleLoginLink, handleRegisterLink } from "../modules/authLinks.js";
 import { infiniteScroll } from "../modules/infiniteScroll.js";
 import { enableUsersProfiles } from "../modules/usersProfiles.js";
+import { showTags } from "../modules/tags.js";
 
 async function init() {
   activeFavTheme();
   await fetchPosts(1);
-  
+  await showTags();
   if (localStorage.getItem('profile')) userView();
   else {
     document.getElementById('loginLink').onclick = handleLoginLink;

@@ -140,7 +140,7 @@ function postBox() {
   const postWrapper = document.getElementById('postsWrapper');
   const profile = JSON.parse(localStorage.getItem('profile'));
   const postBoxHtml = `
-  <div class="hidden md:block w-full lg:w-[800px] p-5 mx-auto">
+  <div class="hidden md:block w-full p-5 mx-auto">
     <form>
       <div class="w-full mb-4 rounded-lg bg-gray-50 dark:bg-black-third">
         <div class="overflow-hidden">

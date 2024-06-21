@@ -19,10 +19,10 @@
       <div class="px-5 py-4 m-2 h-[calc(100%-1rem)] border border-gray-100 dark:border-black-second rounded-lg bg-gray-50 dark:bg-black overflow-y-scroll overflow-x-hidden no-scrollbar">
 
         <div class="grid gap-3 p-2 my-3" id="login-register-wrapper">
-          <a role="button" href="./registeration.html" id="loginLink"
+          <a role="button" href="./registeration.html?type=login" id="loginLink"
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Log
             In</a>
-          <a role="button" href="./registeration.html" id="registerLink"
+          <a role="button" href="./registeration.html?type=register" id="registerLink"
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register</a>
         </div>
 
@@ -127,7 +127,7 @@
       </div>
     </aside>
 
-    <div class="md:pl-64 min-h-lvh dark:bg-black" id="content">
+    <div class="md:pl-64 min-h-lvh dark:bg-black overflow-hidden" id="content">
       <nav
         class="grid items-center grid-cols-[auto,1fr,auto] md:grid-cols-[1fr,auto] border-b border-b-gray-200 py-4 bg-white dark:bg-black dark:border-b-black sticky z-10 top-0">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
@@ -315,42 +315,76 @@
         </div>
       </nav>
 
+      <!-- Error -->
+      <div class="hidden justify-center gap-2 my-5 mx-3" id="error-msg">
+        <img src="../assets/landingPageImages/corocodile.jpg" alt="" class="w-20 h-20 blaock rounded-md justify-self-center">
+        <span class="dark:text-white text-center grid text-xl font-bold">
+          <span>Error <span class="text-black">😁</span></span>
+          <span>Something Went Wrong</span>
+        </span>
+      </div>
+
       <div class="px-10 py-5 grid grid-cols-1 justify-center item-center gap-3 m-2 rounded-md overflow-hidden w-full lg:w-[800px] mx-auto" 
       id="profileWrapper">
         <div id="profileInfo">
           <div class="flex flex-wrap justify-between gap-2">
             <div class="flex  items-center gap-3">
-              <img src="../assets/avatars/avatar_black_bg.jpg" alt="" 
+              <img src="" alt="" 
               class="block w-16 h-16 md:w-20 md:h-20 rounded-full"
               id="profile-image">
               <div>
                 <div>
-                  <span id="profile-name" class="px-2 py-0.5 text-lg md:text-2xl font-bold text-black dark:text-white">Abdulazim</span>
+                  <span id="profile-name" class="px-2 py-0.5 text-lg md:text-2xl font-bold text-black dark:text-white"></span>
                 </div>
                 <div>
-                  <span id="profile-username" class="text-sm border text-black dark:text-white bg-white dark:bg-black-second  border-gray-100 dark:border-gray-800 rounded-md px-2 py-0.5 shadow-sm cursor-pointer">abdulazim_rabie</span>
+                  <span id="profile-username" class="text-sm border text-black dark:text-white bg-white dark:bg-black-second  border-gray-100 dark:border-gray-800 rounded-md px-2 py-0.5 shadow-sm cursor-pointer"></span>
                 </div>
               </div>
             </div>
             <button class="py-1 px-10 ml-5 mt-3 md:m-0 rounded-lg text-white font-bold dark:text-black bg-black dark:bg-white self-center">Add Friend</button>
           </div>
 
-          <div class="flex gap-x-4 py-3 px-5">
+          <div class="px-5  my-2">
+            <span class="flex items-center text-sm font-medium text-gray-900 dark:text-white me-3">
+              <span class="flex w-2.5 h-2.5 bg-teal-500 rounded-full me-1.5 flex-shrink-0">
+              </span>
+              <span id="user-email">a.r@gmail.com</span>
+            </span>
+          </div>
+
+          <div class="flex gap-x-4 px-5">
             <div class="bg-violet-500 text-white px-4 rounded-md">
               <span id="posts-number" 
-              class="font-medium pr-1">3</span>comments
+              class="font-medium pr-1">0</span>comments
             </div>
             <div class="bg-violet-500 text-white px-4 rounded-md">
               <span id="comments-number"
-              class="font-medium pr-1">33</span>Posts
+              class="font-medium pr-1">0</span>Posts
             </div>
           </div>
+
         </div>
       </div>
 
-      <div class="p-5 md:m-2 rounded-md grid grid-cols-1 justify-center justify-items-center gap-3 bg-gray-100 dark:bg-black"
+      <div class="m-2 md:m-3 rounded-md grid grid-cols-1 justify-center justify-items-center bg-gray-100 dark:bg-black lg:w-[800px] lg:mx-auto"
         id="postsWrapper">
       </div>
+
+      <div role="status" id="spinner" 
+      class="hidden justify-center items-center pt-1">
+        <svg aria-hidden="true"
+          class="inline w-8 h-8 md:w-10 md-h-10 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+          viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor" />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill" />
+        </svg>
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
 
     <script src="./JS/profile.js" type="module"></script>
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
