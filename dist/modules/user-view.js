@@ -140,7 +140,7 @@ function postBox() {
   const postWrapper = document.getElementById('postsWrapper');
   const profile = JSON.parse(localStorage.getItem('profile'));
   const postBoxHtml = `
-  <div class="hidden md:block w-full p-5 mx-auto">
+  <div class="hidden md:block w-full p-5 mx-auto" id="postBox">
     <form>
       <div class="w-full mb-4 rounded-lg bg-gray-50 dark:bg-black-third">
         <div class="overflow-hidden">
@@ -187,12 +187,13 @@ function postBox() {
 }
 
 function postBtn() {
+  
   const content = document.getElementById('content');
   const postBtnHtml = `
-  <div data-dial-init class="md:hidden fixed end-3 bottom-3 group">
+  <div data-dial-init class="md:hidden fixed end-3 bottom-3 group" id="postBtn">
     <button type="button" data-modal-target="post-modal" data-modal-toggle="post-modal"
       aria-expanded="false" id="newPostIcon"
-      class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+      class="flex items-center justify-center text-white dark:text-black bg-black rounded-full w-10 h-16 hover:bg-blakc-second dark:bg-gray-50 dark:hover:bg-white">
       <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
@@ -202,14 +203,14 @@ function postBtn() {
   </div>
   `;
 
-  content.insertAdjacentHTML('beforeend', postBtnHtml);
+  content.insertAdjacentHTML('afterend', postBtnHtml);
 }
 
 function postModal() {
   const contentDiv = document.getElementById("content");
   const modalPost = `
   <div id="post-modal" tabindex="-1"
-    class="fixed top-0 left-0 md:left-1/2 md:translate-x-[-50%] z-50 hidden w-full md:w-[800px] md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    class="fixed top-0 left-0 md:left-1/2 md:translate-x-[-50%] z-50 hidden w-full md:w-[800px] md:p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%)] max-h-full">
     <div class="relative w-full h-lvh md:h-fit">
       <!-- Modal content -->
       <div class="flex flex-col h-full md:block md:h-fit relative bg-white rounded-lg shadow dark:bg-black">
@@ -276,7 +277,7 @@ function postModal() {
   </div>
   `;
 
-  contentDiv.insertAdjacentHTML('beforeend', modalPost);
+  contentDiv.insertAdjacentHTML('afterend', modalPost);
 }
 
 export function commentsAction() {

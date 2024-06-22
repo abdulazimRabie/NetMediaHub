@@ -7,6 +7,7 @@ import { deletePost } from "../modules/deletePost.js";
 import { toggleSpinner } from "../modules/toggleLoader.js";
 import { toggleErrorMsg } from "../modules/toggleErrorMsg.js";
 import { showTags } from "../modules/tags.js";
+import { enableUsersProfiles } from "../modules/usersProfiles.js";
 
 const postId = localStorage.getItem('postId');
 const postWrapper = document.getElementById('postsWrapper');
@@ -89,11 +90,16 @@ function commentsAction() {
 
 function fetchComments() {
   const url = `https://tarmeezacademy.com/api/v1/posts/${postId}`;
+  return new Promise ((resolve, reject) => {
+    axios
+    .get(url)
+    .then(response => {
+      showComments(response.data.data.comments);
+      resolve();
+    })
+    .catch(error => console.log(error));
+  })
 
-  axios
-  .get(url)
-  .then(response => showComments(response.data.data.comments))
-  .catch(error => console.log(error));
 }
 
 function addComment() {
@@ -131,12 +137,12 @@ function showComments(comments) {
 
 function showComment(comment) {
   const commentHTML = `
-    <div >
+    <div class='post' author-id='${comment.author.id}'>
       <header>
         <div class="p-1 rounded-md flex flex-wrap items-center gap-1 hover:cursor-pointer">
-          <img class="w-7 h-7 rounded-full mr-1" src="${comment.author.profile_image}" alt="">
+          <img class="w-7 h-7 rounded-full mr-1 cursor-pointer user-image" src="${comment.author.profile_image}" alt="">
           <div class="font-medium dark:text-white">
-            <div>${comment.author.name}</div>
+            <div class="cursor-pointer user-name">${comment.author.name}</div>
           </div>
           <span class="text-gray-500 tex-sm">${comment.author.username}</span>
         </div>
@@ -202,8 +208,9 @@ async function init() {
   activeFavTheme();
   enableTheme();
   await fetchPost();
+  await fetchComments();
+  enableUsersProfiles();
   textareaCheck();
-  fetchComments();
   addComment();
   showPostOptions();
   editPost();

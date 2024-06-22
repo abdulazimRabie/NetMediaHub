@@ -9,11 +9,10 @@ function enableDarkMode() {
 
 function enableLightMode() {
   document.documentElement.classList.remove("dark");
-  localStorage.setItem("theme", "theme");
+  localStorage.setItem("theme", "light");
 }
 
 function enableSystemMode() {
-  console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) enableDarkMode();
   else enableLightMode();
 }

@@ -5,6 +5,7 @@ import { intergrateProfileAvatar } from "../modules/user-view.js";
 import { commentsAction } from "../modules/user-view.js";
 import { toggleSpinner } from "../modules/toggleLoader.js";
 import { toggleErrorMsg } from "../modules/toggleErrorMsg.js";
+import { activeFilter } from "../modules/filter.js";
 
 // extracting user id from url
 const urlParams = new URLSearchParams(window.location.search);
@@ -81,8 +82,10 @@ function isCurrUser() {
 
 async function init() {
   activeFavTheme();
+  activeFilter();
   await fetchUser();
   await fetchUserPosts();
+
 
   if (isCurrUser()) userView();
   else if (isAUser()) {
