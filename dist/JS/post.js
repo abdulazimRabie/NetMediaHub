@@ -42,21 +42,7 @@ function commentsAction() {
     <!-- comments -->
     <div class="mt-5 grid gap-3" id='commentsWrapper'>
       <!-- commnet -->
-      <div >
-        <header>
-          <div class="p-1 rounded-md flex flex-wrap items-center gap-1 hover:cursor-pointer">
-            <img class="w-7 h-7 rounded-full mr-1" src="../assets/avatars/girl.jpg" alt="">
-            <div class="font-medium dark:text-white">
-              <div>Manar Mohamed</div>
-            </div>
-            <span class="text-gray-500 tex-sm">m.r.m@outlook.com</span>
-          </div>
-        </header>
-        <!-- comment body -->
-        <div>
-          <p class="pl-10 text-gray-500 dark:text-gray-200">We have been passionated following all hot ternds in design industry</p>
-        </div>        
-      </div>
+      
     </div>
 
     <!-- add comment -->

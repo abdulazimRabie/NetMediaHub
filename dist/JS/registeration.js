@@ -1,4 +1,5 @@
 import { toggleSpinner } from "../modules/toggleLoader.js";
+import { activeFavTheme } from "../modules/darkmode.js";
 
 const loginBtn = document.getElementById('login');
 const registerBtn = document.getElementById('register');
@@ -6,8 +7,14 @@ const registerBtn = document.getElementById('register');
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const password = document.getElementById('password');
-const submitBtn = document.querySelector('button[type="submit"]');
+const submitRegister = document.querySelector('button[data-type="register"]');
+const submitLogin = document.querySelector('button[data-type="login"]');
 
+const nameInputWrapper = document.getElementById('nameInputWrapper');
+const emailInputWrapper = document.getElementById('emailInputWrapper');
+const imageUploadWrapper = document.getElementById('imageUploadWrapper');
+
+let imageAvatar = null;
 const baseUrl = 'https://tarmeezacademy.com/api/v1';
 
 function addSpinner(element) {
@@ -30,88 +37,67 @@ function addSpinner(element) {
   element.insertAdjacentHTML('beforeend', spinner);
 }
 
-function enableLogin() {
-  localStorage.setItem('registeration', 'login');
-  const submitBtn = document.querySelector('button[type="submit"]');
-
-  loginBtn.classList.add('bg-gray-50', 'dark:bg-gray-800');
-  registerBtn.classList.remove('bg-gray-50', 'dark:bg-gray-800');
-
-  submitBtn.textContent = 'Login';
-  submitBtn.setAttribute('data-type', 'login');
-
-  addSpinner(submitBtn);
-
-  if (localStorage.getItem('registeration') == 'login') {
-    if (document.getElementById('name')) {
-      document.getElementById('name').parentElement.remove();
-      document.getElementById('email').parentElement.remove();
-      document.getElementById('imageUploadWrapper').remove();
-    }
-  }
+function removeSpinner() {
+  const spinner = document.getElementById('spinner')
+  if(spinner) spinner.remove();
 }
 
-function enableRegister() {
-  localStorage.setItem('registeration', 'resister');
+function activeLoginBtn() {
+  loginBtn.classList.add('bg-gray-50', 'dark:bg-[#111824]');
+  registerBtn.classList.remove('bg-gray-50', 'dark:bg-[#111824]');
+}
 
-  const submitBtn = document.querySelector('button[type="submit"]');
+function activeRegisterBtn() {
+  registerBtn.classList.add('bg-gray-50', 'dark:bg-[#111824]');
+  loginBtn.classList.remove('bg-gray-50', 'dark:bg-[#111824]');
+}
 
-  registerBtn.classList.add('bg-gray-50', 'dark:bg-gray-800');
-  loginBtn.classList.remove('bg-gray-50', 'dark:bg-gray-800');
+function hideImageNameEmail() {
+  nameInputWrapper.classList.add('hidden');
+  emailInputWrapper.classList.add('hidden');
+  imageUploadWrapper.classList.add('hidden');
+}
 
-  submitBtn.textContent = 'Register';
-  submitBtn.setAttribute('data-type', 'register');
+function showImageNameEmail() {
+  nameInputWrapper.classList.remove('hidden');
+  emailInputWrapper.classList.remove('hidden');
+  imageUploadWrapper.classList.remove('hidden');
+}
 
-  addSpinner(submitBtn);
+function loginMode() {
+  // 2. active login button
+  // 3. show submit login
+  // 4. hide submit register
+  // 5. add spinner to submitLogin - remove it from submitRegister
+  // 6. hide name , email , image
+  activeLoginBtn();
+  hideImageNameEmail();
 
-  const nameInput = `
-  <div class="mb-5">
-    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
-    <input type="text" id="name"
-      class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      placeholder="name" required />
-  </div>
-  `;
+  submitLogin.classList.remove('hidden');
+  submitRegister.classList.add('hidden');
 
-  const emailInput = `
-  <div class="mb-5">
-    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
-    <input type="text" id="email"
-      class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      placeholder="email" required />
-  </div>
-  `;
+  removeSpinner();
+  addSpinner(submitLogin);
+}
 
-  const imageInput = `
-  <div id="imageUploadWrapper">
-    <label for="inputImageProfile" id="lableImageProfile"
-      class="flex justify-center items-center w-40 h-40 gap-1 bg-cover bg-gray-700 hover:bg-gray-700 text-white text-base outline-none rounded-full cursor-pointer mx-auto font-[sans-serif]">
-      <svg class=" w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-        fill="currentColor" viewBox="0 0 24 24">
-        <path fill-rule="evenodd" d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z" clip-rule="evenodd" />
-        <path fill-rule="evenodd"
-          d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
-          clip-rule="evenodd" />
-      </svg>
-    </label>
-    <input type="file" id='inputImageProfile' accept="image/*" class="hidden" />
-  </div>
-  `
+function registerMode() {
+  // active register button 
+  // show submit register
+  // hide submit login
+  // add spinner to register , remove spinner from login
+  // show name , email , image
 
-  form.insertAdjacentHTML('afterbegin', emailInput);
-  form.insertAdjacentHTML('afterbegin', nameInput);
-  form.insertAdjacentHTML('afterbegin', imageInput);
-  console.log(document.getElementById('lableImageProfile'));
+  activeRegisterBtn();
+  submitRegister.classList.remove('hidden');
+  submitLogin.classList.add('hidden');
+
+  removeSpinner();
+  addSpinner(submitRegister);
+
+  showImageNameEmail();
+
   document.getElementById('inputImageProfile')
   .addEventListener('change', uploadImagePorofile)
-}
-
-function enableTheme() {
-  if (localStorage.getItem('theme') === "dark") {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
 }
 
 function loginFail(error) {
@@ -136,7 +122,6 @@ function loginSuccess(response) {
 
 function loginBtnClicked() {
   console.log("login clicked");
-  localStorage.removeItem('registeration');
 
   const url = `${baseUrl}/login`;
   const params = {
@@ -152,12 +137,21 @@ function loginBtnClicked() {
     .finally(_ => toggleSpinner());
 };
 
-function registerBtnClicked() {
-  localStorage.removeItem('registeration');
+async function blob() {
+  const response = await fetch(imageAvatar);
+  const blobImage = response.blob();
+  console.log( 'blob image is here : ', blobImage);
+  return blobImage;
+}
 
+async function registerBtnClicked() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
-  const image = document.getElementById('inputImageProfile').files[0];
+  let image = document.getElementById('inputImageProfile').files[0];
+
+  if (imageAvatar) { // imageAvatar == null
+    image = await blob();
+  }
 
   const url = `${baseUrl}/register`;
 
@@ -181,7 +175,19 @@ function registerBtnClicked() {
     .then(response => loginSuccess(response))
     .catch(error => loginFail(error.response.data.message))
     .finally(_ => toggleSpinner());
-};
+}
+
+function showPassword() {
+  const checkbox = document.getElementById('showPassword');
+  checkbox.onclick = function () {
+    const x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+}
 
 function preventForm() {
   form.addEventListener('submit', function(event) {
@@ -189,41 +195,52 @@ function preventForm() {
   });
 }
 
+function uploadImagePorofile() {
+  const inputImage = document.getElementById('inputImageProfile');
+  const url = URL.createObjectURL(inputImage.files[0]);
+  updateImagePorfile(url);
+  imageAvatar = null;
+}
+
+function imageAvatarOptions() {
+  const imageAvatarOptions = document.querySelectorAll('.image-avatar');
+  imageAvatarOptions.forEach(imageAvatarOption => {
+    imageAvatarOption.onclick = function () {
+      const url = imageAvatarOption.querySelector('img').getAttribute('src');
+      imageAvatar = url;
+      updateImagePorfile(url);
+    }
+  })
+}
+
+function updateImagePorfile(url) {
+  const lableImage = document.getElementById('lableImageProfile');
+  const imgHTML = `
+  <img src='${url}' class='w-full h-full rounded-full'></img>
+  `
+  
+  lableImage.innerHTML = '';
+  lableImage.innerHTML = imgHTML;
+}
+
 function init() {
   const params = new URLSearchParams(window.location.search);
   const type = params.get('type');
   if (type == 'login')
-    enableLogin();
+    loginMode();
   else
-    enableRegister();
+    registerMode();
 
-  enableTheme();
+  activeFavTheme();
+  imageAvatarOptions();
+  showPassword();
   preventForm();
 
-  loginBtn.addEventListener('click', enableLogin);
-  registerBtn.addEventListener('click', enableRegister);
+  loginBtn.addEventListener('click', loginMode);
+  registerBtn.addEventListener('click', registerMode);
 
-  submitBtn.addEventListener('click', function() {
-    console.log('submit clicked')
-
-    if (submitBtn.getAttribute('data-type')  == 'login') loginBtnClicked();
-    else registerBtnClicked();
-  })
-}
-
-function uploadImagePorofile() {
-  console.log('update image profile function');
-  const inputImage = document.getElementById('inputImageProfile');
-  const lableImage = document.getElementById('lableImageProfile');
-  const url = URL.createObjectURL(inputImage.files[0]);
-  console.log(url);
-
-  const imgHTML = `
-  <img src='${url}' class='w-full h-full rounded-full'></img>
-  `
-
-  lableImage.innerHTML = '';
-  lableImage.innerHTML = imgHTML;
+  submitRegister.addEventListener('click', registerBtnClicked);
+  submitLogin.addEventListener('click', loginBtnClicked);
 }
 
 window.onload = init();

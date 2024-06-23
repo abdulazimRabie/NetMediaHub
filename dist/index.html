@@ -24,13 +24,14 @@
   <div class="h-lvh grid grid-cols-1 md:grid-cols-2">
     <!-- image and logo -->
     <div class="relative hidden md:block">
-      <div class="relative h-full w-full bg-slate-950">
+      <div class="relative h-full w-full bg-white dark:bg-slate-950">
         <div
           class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
         </div>
       </div>
+
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h1 class="text-6xl text-center font-bold font-Playfair bg-gradient-to-tr from-[#eae384] to-[#2e2c2c] bg-clip-text text-transparent mb-3">
+        <h1 class="text-6xl text-center font-bold font-Playfair bg-gradient-to-tr from-[#eae384] to-[#2e2c2c] bg-clip-text text-transparent mb-8">
           NetMediaHub
         </h1>
         <img src="../assets/landingPageImages/ragelBHosan.jpg" alt=""
@@ -40,20 +41,20 @@
 
     <!-- signin - register - feed -->
     <div class="relative">
-      <div class="relative h-full w-full bg-slate-950">
+      <div class="relative h-full w-full bg-white dark:bg-slate-950">
         <div
           class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
         </div>
       </div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h1 class="md:hidden">Social Network</h1>
+        <h1 class="md:hidden text-6xl text-center font-bold font-Playfair bg-gradient-to-tr from-[#eae384] to-[#2e2c2c] bg-clip-text text-transparent mb-8">NetMediaHub</h1>
 
-        <div class="grid gap-3">
+        <div class="grid justify-items-center gap-3">
 
           <div style="transform: none;">
             <a href="registeration.html?type=register">
               <button
-                class="w-60 relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl shadow-zinc-900"><span
+                class="w-60 relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl"><span
                   class="absolute inset-0 overflow-hidden rounded-xl"><span
                     class="absolute inset-0 rounded-xl bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         
@@ -72,7 +73,7 @@
           <div style="transform: none;">
             <a href="registeration.html?type=login">
               <button
-                class="w-60 relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl shadow-zinc-900"><span
+                class="w-60 relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl"><span
                   class="absolute inset-0 overflow-hidden rounded-xl"><span
                     class="absolute inset-0 rounded-xl bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         
@@ -91,7 +92,7 @@
           <div style="transform: none;">
             <a href="home.html">
               <button
-                class="w-60 relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl shadow-zinc-900">
+                class="w-60 relative inline-block p-px font-semibold leading-6 text-white no-underline bg-gray-800 shadow-2xl cursor-pointer group rounded-xl">
                 <span
                   class="absolute inset-0 overflow-hidden rounded-xl">
                   <span
@@ -102,7 +103,7 @@
                   class="relative z-10 flex justify-center items-center px-6 py-3 space-x-2 rounded-xl bg-gray-950/50 ring-1 ring-white/10 ">
                   <span>Go To Feed</span>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                    data-slot="icon" class="w-6 h-6">
+                    data-slot="icon" class="w-6 h-6 mt-[3px]">
                     <path fill-rule="evenodd"
                       d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
                       clip-rule="evenodd"></path>
@@ -118,8 +119,39 @@
       </div>
     </div>
 
+    <!-- Darak mode options -->
+    <div class="absolute top-3 right-3 flex items-center gap-2 bg-gray-50 dark:bg-[#111824] rounded-lg">
+      <button id="lightBtn"
+        class="flex w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
+        </svg>
+      </button>
+
+      <button id="darkBtn"
+        class="flex w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
+        </svg>
+      </button>
+
+      <button id="systemBtn"
+        class="flex w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1M9 12H4m8 8V9h8v11h-8Zm0 0H9m8-4a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z" />
+        </svg>
+      </button>
+    </div>
   </div>
+
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src="./JS/index.js" type="module"></script>
 </body>
 
 </html>

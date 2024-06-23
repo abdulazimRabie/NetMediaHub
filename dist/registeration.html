@@ -12,35 +12,152 @@
 </head>
 <body class="dark:bg-black">
 
-  <div class="w-5/6 lg:w-2/3 mx-auto min-h-screen p-10 justify-center place-content-center">
+  <div class="w-full md:w-5/6 lg:w-2/3 mx-auto min-h-screen p-5 md:p-10 justify-center place-content-center">
     <div class="grid gap-6">
-      <h1 class="font-extrabold text-3xl dark:text-white">Social Network</h1>
+      <h1 class="font-extrabold text-3xl dark:text-white">NetMediaHub</h1>
+
       <div class="flex justify-center flex-wrap">
         <button type="button" id="login"
           class="grow basis-28 shrink-0 px-6 py-3.5 text-base font-medium text-black border border-gray-300 dark:border-gray-700 hover:bg-gray-50 rounded-lg text-center me-2 mb-2 dark:bg-black-second dark:text-white">Login</button>
         <button type="button" id="register"
           class="grow basis-28 shrink-0 px-6 py-3.5 text-base font-medium text-black border border-gray-300 dark:border-gray-700 hover:bg-gray-50 rounded-lg text-center me-2 mb-2 dark:bg-black-second dark:text-white">Register</button>
       </div>
+
       <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-black-second">
         <form class="max-w-sm mx-auto" id="form">
-          
+
+          <div class="flex gap-x-3 justify-center" id="imageUploadWrapper">
+            <div>
+              <label for="inputImageProfile" id="lableImageProfile"
+                class="flex justify-center items-center w-40 h-40 gap-1 bg-cover bg-gray-800 dark:bg-black hover:bg-gray-900 text-white text-base outline-none rounded-full cursor-pointer mx-auto">
+                <svg class=" w-6 h-6 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd"
+                    d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
+                    clip-rule="evenodd" />
+                </svg>
+              </label>
+              <input type="file" id='inputImageProfile' accept="image/*" class="hidden" />
+            </div>
+
+            <div class="grid content-center gap-3" id="avatar-options">
+              <button class="p-0.5 border border-gray-200 w-10 h-10 block rounded-full overflow-hidden image-avatar">
+                <img src="../assets/avatars/yellowBoy.jfif" alt="" class="w-full h-full rounded-full">
+              </button>
+
+              <button class="p-0.5 ms-2 border border-gray-200 w-10 h-10 block rounded-full overflow-hidden image-avatar">
+                <img src="../assets/avatars/avatar_black_bg.jpg" alt="" class="w-full h-full rounded-full">
+              </button>
+
+              <button class="p-0.5 border border-gray-200 w-10 h-10 block rounded-full overflow-hidden image-avatar">
+                <img src="../assets/avatars/download.jpg" alt="" class="w-full h-full rounded-full">
+              </button>
+              
+            </div>
+          </div>
+
+          <div class="mb-5" id="nameInputWrapper">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+            <input type="text" id="name"
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="name" required />
+          </div>
+
+          <div class="mb-5" id="emailInputWrapper">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <input type="text" id="email"
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="email" required />
+          </div>
+
+          <!-- username -->
           <div class="mb-5">
-            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Username</label>
+            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
             <input type="text" id="username"
-              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="username_" required />
           </div>
+
+          <!-- password -->
           <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password</label>
             <input type="password" id="password"
-              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required />
-          </div>      
+          </div>
+          
+          <div class="flex items-start mb-5">
+            <div class="flex items-center h-5">
+              <input id="showPassword" type="checkbox" value=""
+                class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"/>
+            </div>
+            <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+          </div>
+
           <button type="submit" data-type="login"
-            class="flex justify-center items-center gap-y-2 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full lg:w-fit">Submit</button>
+            class="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-green-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none">
+            <span
+              class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+            <span
+              class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+            <span class="relative z-20 flex items-center text-sm">
+              <svg class="relative w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Login
+            </span>
+          </button>
+
+          <button type="submit" data-type="register"
+            class="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-green-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none">
+            <span
+              class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+            <span
+              class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+            <span class="relative z-20 flex items-center text-sm">
+              <svg class="relative w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Register
+            </span>
+          </button>
+
           <span class="block my-3 " id="msg"></span>
         </form>
       </div>
+    </div>
+
+    <!-- Dark and light mode -->
+    <div class="absolute top-3 right-3 flex items-center gap-2 bg-gray-50 dark:bg-[#111824] rounded-lg">
+      <button id="lightBtn"
+        class="flex w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
+        </svg>
+      </button>
+    
+      <button id="darkBtn"
+        class="flex w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
+        </svg>
+      </button>
+    
+      <button id="systemBtn"
+        class="flex w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-800">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1M9 12H4m8 8V9h8v11h-8Zm0 0H9m8-4a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z" />
+        </svg>
+      </button>
     </div>
   </div>
   
